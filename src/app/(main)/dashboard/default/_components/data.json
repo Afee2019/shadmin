@@ -1,0 +1,614 @@
+[
+  {
+    "id": 1,
+    "header": "封面",
+    "type": "封面",
+    "status": "进行中",
+    "target": "18",
+    "limit": "5",
+    "reviewer": "李明"
+  },
+  {
+    "id": 2,
+    "header": "目录",
+    "type": "目录",
+    "status": "已完成",
+    "target": "29",
+    "limit": "24",
+    "reviewer": "李明"
+  },
+  {
+    "id": 3,
+    "header": "执行摘要",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "10",
+    "limit": "13",
+    "reviewer": "李明"
+  },
+  {
+    "id": 4,
+    "header": "技术方案",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "27",
+    "limit": "23",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 5,
+    "header": "设计",
+    "type": "叙述",
+    "status": "进行中",
+    "target": "2",
+    "limit": "16",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 6,
+    "header": "能力说明",
+    "type": "叙述",
+    "status": "进行中",
+    "target": "20",
+    "limit": "8",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 7,
+    "header": "与现有系统集成",
+    "type": "叙述",
+    "status": "进行中",
+    "target": "19",
+    "limit": "21",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 8,
+    "header": "创新与优势",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "25",
+    "limit": "26",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 9,
+    "header": "EMR 创新解决方案概述",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "7",
+    "limit": "23",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 10,
+    "header": "高级算法与机器学习",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "30",
+    "limit": "28",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 11,
+    "header": "自适应通信协议",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "9",
+    "limit": "31",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 12,
+    "header": "相比现有技术的优势",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "12",
+    "limit": "0",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 13,
+    "header": "历史业绩",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "22",
+    "limit": "33",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 14,
+    "header": "客户反馈与满意度",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "15",
+    "limit": "34",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 15,
+    "header": "实施挑战与解决方案",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "3",
+    "limit": "35",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 16,
+    "header": "安全措施与数据保护政策",
+    "type": "叙述",
+    "status": "进行中",
+    "target": "6",
+    "limit": "36",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 17,
+    "header": "可扩展性与未来规划",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "4",
+    "limit": "37",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 18,
+    "header": "成本效益分析",
+    "type": "通俗语言",
+    "status": "已完成",
+    "target": "14",
+    "limit": "38",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 19,
+    "header": "用户培训与入职体验",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "17",
+    "limit": "39",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 20,
+    "header": "未来发展路线图",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "11",
+    "limit": "40",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 21,
+    "header": "系统架构概述",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "24",
+    "limit": "18",
+    "reviewer": "王芳"
+  },
+  {
+    "id": 22,
+    "header": "风险管理计划",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "15",
+    "limit": "22",
+    "reviewer": "刘强"
+  },
+  {
+    "id": 23,
+    "header": "合规文档",
+    "type": "法务",
+    "status": "进行中",
+    "target": "31",
+    "limit": "27",
+    "reviewer": "陈静"
+  },
+  {
+    "id": 24,
+    "header": "API 文档",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "8",
+    "limit": "12",
+    "reviewer": "赵鹏"
+  },
+  {
+    "id": 25,
+    "header": "用户界面原型",
+    "type": "视觉",
+    "status": "进行中",
+    "target": "19",
+    "limit": "25",
+    "reviewer": "孙丽"
+  },
+  {
+    "id": 26,
+    "header": "数据库架构",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "22",
+    "limit": "20",
+    "reviewer": "周涛"
+  },
+  {
+    "id": 27,
+    "header": "测试方法论",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "17",
+    "limit": "14",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 28,
+    "header": "部署策略",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "26",
+    "limit": "30",
+    "reviewer": "李明"
+  },
+  {
+    "id": 29,
+    "header": "预算明细",
+    "type": "财务",
+    "status": "进行中",
+    "target": "13",
+    "limit": "16",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 30,
+    "header": "市场分析",
+    "type": "研究",
+    "status": "已完成",
+    "target": "29",
+    "limit": "32",
+    "reviewer": "黄莉"
+  },
+  {
+    "id": 31,
+    "header": "竞品对比",
+    "type": "研究",
+    "status": "进行中",
+    "target": "21",
+    "limit": "19",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 32,
+    "header": "维护计划",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "16",
+    "limit": "23",
+    "reviewer": "吴军"
+  },
+  {
+    "id": 33,
+    "header": "用户画像",
+    "type": "研究",
+    "status": "进行中",
+    "target": "27",
+    "limit": "24",
+    "reviewer": "徐婷"
+  },
+  {
+    "id": 34,
+    "header": "无障碍合规",
+    "type": "法务",
+    "status": "已完成",
+    "target": "18",
+    "limit": "21",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 35,
+    "header": "性能指标",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "23",
+    "limit": "26",
+    "reviewer": "金浩"
+  },
+  {
+    "id": 36,
+    "header": "灾难恢复计划",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "14",
+    "limit": "17",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 37,
+    "header": "第三方集成",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "25",
+    "limit": "28",
+    "reviewer": "李明"
+  },
+  {
+    "id": 38,
+    "header": "用户反馈汇总",
+    "type": "研究",
+    "status": "已完成",
+    "target": "20",
+    "limit": "15",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 39,
+    "header": "本地化策略",
+    "type": "叙述",
+    "status": "进行中",
+    "target": "12",
+    "limit": "19",
+    "reviewer": "马丽"
+  },
+  {
+    "id": 40,
+    "header": "移动端兼容性",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "28",
+    "limit": "31",
+    "reviewer": "杨帆"
+  },
+  {
+    "id": 41,
+    "header": "数据迁移计划",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "19",
+    "limit": "22",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 42,
+    "header": "质量保证协议",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "30",
+    "limit": "33",
+    "reviewer": "林雪"
+  },
+  {
+    "id": 43,
+    "header": "利益相关者分析",
+    "type": "研究",
+    "status": "进行中",
+    "target": "11",
+    "limit": "14",
+    "reviewer": "李明"
+  },
+  {
+    "id": 44,
+    "header": "环境影响评估",
+    "type": "研究",
+    "status": "已完成",
+    "target": "24",
+    "limit": "27",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 45,
+    "header": "知识产权",
+    "type": "法务",
+    "status": "进行中",
+    "target": "17",
+    "limit": "20",
+    "reviewer": "郑华"
+  },
+  {
+    "id": 46,
+    "header": "客户支持框架",
+    "type": "叙述",
+    "status": "已完成",
+    "target": "22",
+    "limit": "25",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 47,
+    "header": "版本控制策略",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "15",
+    "limit": "18",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 48,
+    "header": "持续集成流水线",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "26",
+    "limit": "29",
+    "reviewer": "陈峰"
+  },
+  {
+    "id": 49,
+    "header": "法规合规",
+    "type": "法务",
+    "status": "进行中",
+    "target": "13",
+    "limit": "16",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 50,
+    "header": "用户认证系统",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "28",
+    "limit": "31",
+    "reviewer": "李明"
+  },
+  {
+    "id": 51,
+    "header": "数据分析框架",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "21",
+    "limit": "24",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 52,
+    "header": "云基础设施",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "16",
+    "limit": "19",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 53,
+    "header": "网络安全措施",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "29",
+    "limit": "32",
+    "reviewer": "王敏"
+  },
+  {
+    "id": 54,
+    "header": "项目时间线",
+    "type": "规划",
+    "status": "已完成",
+    "target": "14",
+    "limit": "17",
+    "reviewer": "李明"
+  },
+  {
+    "id": 55,
+    "header": "资源分配",
+    "type": "规划",
+    "status": "进行中",
+    "target": "27",
+    "limit": "30",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 56,
+    "header": "团队结构与职责",
+    "type": "规划",
+    "status": "已完成",
+    "target": "20",
+    "limit": "23",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 57,
+    "header": "沟通协议",
+    "type": "规划",
+    "status": "进行中",
+    "target": "15",
+    "limit": "18",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 58,
+    "header": "成功指标",
+    "type": "规划",
+    "status": "已完成",
+    "target": "30",
+    "limit": "33",
+    "reviewer": "李明"
+  },
+  {
+    "id": 59,
+    "header": "国际化支持",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "23",
+    "limit": "26",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 60,
+    "header": "备份与恢复流程",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "18",
+    "limit": "21",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 61,
+    "header": "监控与告警系统",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "25",
+    "limit": "28",
+    "reviewer": "朴俊"
+  },
+  {
+    "id": 62,
+    "header": "代码审查规范",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "12",
+    "limit": "15",
+    "reviewer": "李明"
+  },
+  {
+    "id": 63,
+    "header": "文档标准",
+    "type": "技术内容",
+    "status": "进行中",
+    "target": "27",
+    "limit": "30",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 64,
+    "header": "发布管理流程",
+    "type": "规划",
+    "status": "已完成",
+    "target": "22",
+    "limit": "25",
+    "reviewer": "待分配"
+  },
+  {
+    "id": 65,
+    "header": "功能优先级矩阵",
+    "type": "规划",
+    "status": "进行中",
+    "target": "19",
+    "limit": "22",
+    "reviewer": "艾玛"
+  },
+  {
+    "id": 66,
+    "header": "技术债务评估",
+    "type": "技术内容",
+    "status": "已完成",
+    "target": "24",
+    "limit": "27",
+    "reviewer": "李明"
+  },
+  {
+    "id": 67,
+    "header": "容量规划",
+    "type": "规划",
+    "status": "进行中",
+    "target": "21",
+    "limit": "24",
+    "reviewer": "张伟"
+  },
+  {
+    "id": 68,
+    "header": "服务等级协议",
+    "type": "法务",
+    "status": "已完成",
+    "target": "26",
+    "limit": "29",
+    "reviewer": "待分配"
+  }
+]
