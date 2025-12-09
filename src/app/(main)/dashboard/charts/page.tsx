@@ -510,15 +510,15 @@ export default function ChartsPage() {
           <Card>
             <CardHeader>
               <CardTitle>仪表盘图</CardTitle>
-              <CardDescription>展示单一指标进度的仪表盘</CardDescription>
+              <CardDescription>带刻度和指针的仪表盘图</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap items-center justify-center gap-8 py-4">
                 <GaugeChart value={75} label="完成率" size="lg" />
-                <div className="flex flex-col gap-4">
-                  <GaugeChart value={92} label="CPU" size="sm" colors={{ indicator: "hsl(var(--chart-1))" }} />
-                  <GaugeChart value={45} label="内存" size="sm" colors={{ indicator: "hsl(var(--chart-2))" }} />
-                  <GaugeChart value={68} label="存储" size="sm" colors={{ indicator: "hsl(var(--chart-3))" }} />
+                <div className="flex flex-col gap-6">
+                  <GaugeChart value={92} label="CPU" size="sm" />
+                  <GaugeChart value={45} label="内存" size="sm" />
+                  <GaugeChart value={68} label="存储" size="sm" />
                 </div>
               </div>
             </CardContent>
