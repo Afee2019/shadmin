@@ -2,6 +2,9 @@
 
 import { cn } from "@/lib/utils";
 
+// 四舍五入到2位小数，避免浮点精度导致的 hydration 不匹配
+const r = (n: number) => Math.round(n * 100) / 100;
+
 interface GaugeChartProps {
   value: number;
   min?: number;
@@ -25,10 +28,10 @@ export function GaugeChart({
   const percentage = ((normalizedValue - min) / (max - min)) * 100;
 
   // SVG 参数
-  const size = 320;
+  const size = 360;
   const centerX = size / 2;
-  const centerY = size / 2 + 20;
-  const radius = 120;
+  const centerY = size / 2 + 10;
+  const radius = 140;
 
   // 角度范围：从 135度 到 405度 (270度 的弧形)
   const startAngle = 135;
@@ -59,14 +62,14 @@ export function GaugeChart({
     const innerRadius = radius - 15;
     const outerRadius = radius + 15;
 
-    const x1 = centerX + innerRadius * Math.cos(startRad);
-    const y1 = centerY + innerRadius * Math.sin(startRad);
-    const x2 = centerX + outerRadius * Math.cos(startRad);
-    const y2 = centerY + outerRadius * Math.sin(startRad);
-    const x3 = centerX + outerRadius * Math.cos(endRad);
-    const y3 = centerY + outerRadius * Math.sin(endRad);
-    const x4 = centerX + innerRadius * Math.cos(endRad);
-    const y4 = centerY + innerRadius * Math.sin(endRad);
+    const x1 = r(centerX + innerRadius * Math.cos(startRad));
+    const y1 = r(centerY + innerRadius * Math.sin(startRad));
+    const x2 = r(centerX + outerRadius * Math.cos(startRad));
+    const y2 = r(centerY + outerRadius * Math.sin(startRad));
+    const x3 = r(centerX + outerRadius * Math.cos(endRad));
+    const y3 = r(centerY + outerRadius * Math.sin(endRad));
+    const x4 = r(centerX + innerRadius * Math.cos(endRad));
+    const y4 = r(centerY + innerRadius * Math.sin(endRad));
 
     segments.push(
       <path
@@ -88,15 +91,15 @@ export function GaugeChart({
     // 刻度线
     const innerTick = radius - 20;
     const outerTick = radius - 25;
-    const x1 = centerX + innerTick * Math.cos(tickRad);
-    const y1 = centerY + innerTick * Math.sin(tickRad);
-    const x2 = centerX + outerTick * Math.cos(tickRad);
-    const y2 = centerY + outerTick * Math.sin(tickRad);
+    const x1 = r(centerX + innerTick * Math.cos(tickRad));
+    const y1 = r(centerY + innerTick * Math.sin(tickRad));
+    const x2 = r(centerX + outerTick * Math.cos(tickRad));
+    const y2 = r(centerY + outerTick * Math.sin(tickRad));
 
     // 标签位置
     const labelRadius = radius - 42;
-    const labelX = centerX + labelRadius * Math.cos(tickRad);
-    const labelY = centerY + labelRadius * Math.sin(tickRad);
+    const labelX = r(centerX + labelRadius * Math.cos(tickRad));
+    const labelY = r(centerY + labelRadius * Math.sin(tickRad));
 
     return (
       <g key={index}>
@@ -119,15 +122,15 @@ export function GaugeChart({
   const needleLength = radius - 25;
   const needleWidth = 10;
 
-  const needleTipX = centerX + needleLength * Math.cos(needleRad);
-  const needleTipY = centerY + needleLength * Math.sin(needleRad);
+  const needleTipX = r(centerX + needleLength * Math.cos(needleRad));
+  const needleTipY = r(centerY + needleLength * Math.sin(needleRad));
 
   // 指针底部两个点（垂直于指针方向）
   const perpRad = needleRad + Math.PI / 2;
-  const baseX1 = centerX + needleWidth * Math.cos(perpRad);
-  const baseY1 = centerY + needleWidth * Math.sin(perpRad);
-  const baseX2 = centerX - needleWidth * Math.cos(perpRad);
-  const baseY2 = centerY - needleWidth * Math.sin(perpRad);
+  const baseX1 = r(centerX + needleWidth * Math.cos(perpRad));
+  const baseY1 = r(centerY + needleWidth * Math.sin(perpRad));
+  const baseX2 = r(centerX - needleWidth * Math.cos(perpRad));
+  const baseY2 = r(centerY - needleWidth * Math.sin(perpRad));
 
   return (
     <div className={cn("relative flex flex-col items-center", className)}>
