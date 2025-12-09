@@ -26,6 +26,7 @@ import {
   Bell,
   FolderOpen,
   Search,
+  TrendingUp,
   type LucideIcon,
 } from "lucide-react";
 
@@ -96,6 +97,12 @@ export const sidebarItems: NavGroup[] = [
         title: "物流管理",
         url: "/dashboard/logistics",
         icon: Forklift,
+        isNew: true,
+      },
+      {
+        title: "销售分析",
+        url: "/dashboard/sales",
+        icon: TrendingUp,
         isNew: true,
       },
     ],

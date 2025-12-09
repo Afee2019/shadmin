@@ -31,6 +31,8 @@ import {
 import { FadeIn } from "@/components/animation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { GaugeChart } from "@/components/ui/gauge-chart";
+import { RadialProgress } from "@/components/ui/radial-progress";
 
 // 线性图数据
 const lineChartData = [
@@ -498,8 +500,50 @@ export default function ChartsPage() {
         </div>
       </FadeIn>
 
-      {/* 第六行：漏斗图和树图 */}
+      {/* 第六行：仪表盘图和环形进度图 */}
       <FadeIn delay={600}>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* 仪表盘图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>仪表盘图</CardTitle>
+              <CardDescription>展示单一指标进度的仪表盘</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap items-center justify-center gap-8 py-4">
+                <GaugeChart value={75} label="完成率" size="lg" />
+                <div className="flex flex-col gap-4">
+                  <GaugeChart value={92} label="CPU" size="sm" colors={{ indicator: "hsl(var(--chart-1))" }} />
+                  <GaugeChart value={45} label="内存" size="sm" colors={{ indicator: "hsl(var(--chart-2))" }} />
+                  <GaugeChart value={68} label="存储" size="sm" colors={{ indicator: "hsl(var(--chart-3))" }} />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 环形进度图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>环形进度图</CardTitle>
+              <CardDescription>展示百分比进度的环形图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap items-center justify-center gap-6 py-4">
+                <RadialProgress value={85} size="lg" label="销售目标" color="primary" />
+                <div className="grid grid-cols-2 gap-4">
+                  <RadialProgress value={92} size="sm" label="转化率" color="success" />
+                  <RadialProgress value={45} size="sm" label="退货率" color="warning" />
+                  <RadialProgress value={78} size="sm" label="复购率" color="info" />
+                  <RadialProgress value={23} size="sm" label="流失率" color="destructive" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </FadeIn>
+
+      {/* 第七行：漏斗图和树图 */}
+      <FadeIn delay={700}>
         <div className="grid gap-6 md:grid-cols-2">
           {/* 漏斗图 */}
           <Card>
@@ -576,7 +620,7 @@ export default function ChartsPage() {
       </FadeIn>
 
       {/* 使用说明 */}
-      <FadeIn delay={700}>
+      <FadeIn delay={800}>
         <Card>
           <CardHeader>
             <CardTitle>图表使用说明</CardTitle>
