@@ -33,8 +33,8 @@ export function AccountSwitcher({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="ghost" className="overflow-hidden p-0">
-          <Avatar className="size-full rounded-none">
-            <AvatarImage src={activeUser.avatar || undefined} alt={activeUser.name} />
+          <Avatar className="bg-muted size-full rounded-none">
+            <AvatarImage src={activeUser.avatar || undefined} alt={activeUser.name} className="rounded-none" />
             <AvatarFallback className="rounded-none">{getInitials(activeUser.name)}</AvatarFallback>
           </Avatar>
         </Button>
