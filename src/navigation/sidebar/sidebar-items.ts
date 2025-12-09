@@ -148,9 +148,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "聊天",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/chat",
         icon: MessageSquare,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "日历",
@@ -178,9 +178,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "角色",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/roles",
         icon: Lock,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "身份验证",

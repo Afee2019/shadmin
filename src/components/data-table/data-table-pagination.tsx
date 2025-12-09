@@ -11,14 +11,25 @@ interface DataTablePaginationProps<TData> {
 
 export function DataTablePagination<TData>({ table }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center justify-between px-4">
-      <div className="text-muted-foreground hidden flex-1 text-sm lg:flex">
-        已选择 {table.getFilteredSelectedRowModel().rows.length} / {table.getFilteredRowModel().rows.length} 行
+    <div className="flex flex-col gap-4 px-2 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+      {/* 移动端：显示简化的选择信息 */}
+      <div className="text-muted-foreground text-center text-sm sm:text-left">
+        <span className="sm:hidden">
+          {table.getFilteredSelectedRowModel().rows.length > 0 && (
+            <>已选 {table.getFilteredSelectedRowModel().rows.length} 行 · </>
+          )}
+          共 {table.getFilteredRowModel().rows.length} 行
+        </span>
+        <span className="hidden sm:inline">
+          已选择 {table.getFilteredSelectedRowModel().rows.length} / {table.getFilteredRowModel().rows.length} 行
+        </span>
       </div>
-      <div className="flex w-full items-center gap-8 lg:w-fit">
-        <div className="hidden items-center gap-2 lg:flex">
-          <Label htmlFor="rows-per-page" className="text-sm font-medium">
-            每页行数
+
+      <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-6">
+        {/* 每页行数选择器 - 移动端也显示 */}
+        <div className="flex items-center gap-2">
+          <Label htmlFor="rows-per-page" className="text-sm font-medium whitespace-nowrap">
+            每页
           </Label>
           <Select
             value={`${table.getState().pagination.pageSize}`}
@@ -26,7 +37,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
               table.setPageSize(Number(value));
             }}
           >
-            <SelectTrigger size="sm" className="w-20" id="rows-per-page">
+            <SelectTrigger size="sm" className="w-16" id="rows-per-page">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
             <SelectContent side="top">
@@ -38,18 +49,23 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             </SelectContent>
           </Select>
         </div>
-        <div className="flex w-fit items-center justify-center text-sm font-medium">
-          第 {table.getState().pagination.pageIndex + 1} / {table.getPageCount()} 页
+
+        {/* 页码显示 */}
+        <div className="flex items-center justify-center text-sm font-medium whitespace-nowrap">
+          {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
         </div>
-        <div className="ml-auto flex items-center gap-2 lg:ml-0">
+
+        {/* 分页按钮 */}
+        <div className="flex items-center gap-1">
           <Button
             variant="outline"
-            className="hidden h-8 w-8 p-0 lg:flex"
+            className="hidden size-8 sm:flex"
+            size="icon"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">转到第一页</span>
-            <ChevronsLeft />
+            <ChevronsLeft className="h-4 w-4" />
           </Button>
           <Button
             variant="outline"
@@ -59,7 +75,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">上一页</span>
-            <ChevronLeft />
+            <ChevronLeft className="h-4 w-4" />
           </Button>
           <Button
             variant="outline"
@@ -69,17 +85,17 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             disabled={!table.getCanNextPage()}
           >
             <span className="sr-only">下一页</span>
-            <ChevronRight />
+            <ChevronRight className="h-4 w-4" />
           </Button>
           <Button
             variant="outline"
-            className="hidden size-8 lg:flex"
+            className="hidden size-8 sm:flex"
             size="icon"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
             <span className="sr-only">转到最后一页</span>
-            <ChevronsRight />
+            <ChevronsRight className="h-4 w-4" />
           </Button>
         </div>
       </div>

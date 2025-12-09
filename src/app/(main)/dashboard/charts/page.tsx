@@ -7,6 +7,7 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
+  ComposedChart,
   Legend,
   Line,
   LineChart,
@@ -16,8 +17,13 @@ import {
   PolarGrid,
   Radar,
   RadarChart,
+  RadialBar,
+  RadialBarChart,
+  Scatter,
+  ScatterChart,
   XAxis,
   YAxis,
+  ZAxis,
 } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -110,6 +116,62 @@ const stackedBarData = [
 const stackedBarConfig = {
   product: { label: "产品", color: "var(--chart-1)" },
   service: { label: "服务", color: "var(--chart-2)" },
+} satisfies ChartConfig;
+
+// 极坐标图数据 (RadialBar/玫瑰图)
+const radialBarData = [
+  { name: "直接访问", value: 80, fill: "var(--chart-1)" },
+  { name: "搜索引擎", value: 65, fill: "var(--chart-2)" },
+  { name: "社交媒体", value: 50, fill: "var(--chart-3)" },
+  { name: "广告投放", value: 40, fill: "var(--chart-4)" },
+  { name: "其他来源", value: 25, fill: "var(--chart-5)" },
+];
+
+const radialBarConfig = {
+  value: { label: "百分比", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
+// 气泡图数据
+const bubbleChartData = [
+  { x: 100, y: 200, z: 200, category: "产品A" },
+  { x: 120, y: 100, z: 260, category: "产品B" },
+  { x: 170, y: 300, z: 400, category: "产品C" },
+  { x: 140, y: 250, z: 280, category: "产品D" },
+  { x: 150, y: 400, z: 500, category: "产品E" },
+  { x: 110, y: 280, z: 200, category: "产品F" },
+];
+
+const bubbleChartConfig = {
+  z: { label: "销量", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
+// 混合图数据
+const composedChartData = [
+  { name: "1月", uv: 590, pv: 800, amt: 1400 },
+  { name: "2月", uv: 868, pv: 967, amt: 1506 },
+  { name: "3月", uv: 1397, pv: 1098, amt: 989 },
+  { name: "4月", uv: 1480, pv: 1200, amt: 1228 },
+  { name: "5月", uv: 1520, pv: 1108, amt: 1100 },
+  { name: "6月", uv: 1400, pv: 680, amt: 1700 },
+];
+
+const composedChartConfig = {
+  uv: { label: "UV", color: "var(--chart-1)" },
+  pv: { label: "PV", color: "var(--chart-2)" },
+  amt: { label: "转化", color: "var(--chart-3)" },
+} satisfies ChartConfig;
+
+// 横向柱状图数据
+const horizontalBarData = [
+  { name: "华东区", value: 400 },
+  { name: "华南区", value: 300 },
+  { name: "华北区", value: 280 },
+  { name: "西南区", value: 200 },
+  { name: "东北区", value: 180 },
+];
+
+const horizontalBarConfig = {
+  value: { label: "销售额", color: "var(--chart-1)" },
 } satisfies ChartConfig;
 
 export default function ChartsPage() {
@@ -269,6 +331,119 @@ export default function ChartsPage() {
                 <Legend />
                 <Bar dataKey="product" stackId="a" fill="var(--color-product)" radius={[0, 0, 0, 0]} />
                 <Bar dataKey="service" stackId="a" fill="var(--color-service)" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* 第四行：极坐标图和气泡图 */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* 极坐标图/玫瑰图 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>极坐标图</CardTitle>
+            <CardDescription>展示占比分布的玫瑰图</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={radialBarConfig} className="mx-auto h-[300px] w-full">
+              <RadialBarChart
+                cx="50%"
+                cy="50%"
+                innerRadius="20%"
+                outerRadius="90%"
+                data={radialBarData}
+                startAngle={90}
+                endAngle={-270}
+              >
+                <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
+                <RadialBar
+                  background
+                  dataKey="value"
+                  cornerRadius={4}
+                  label={{ position: "insideStart", fill: "#fff", fontSize: 12 }}
+                />
+                <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+                <Legend
+                  iconSize={10}
+                  layout="vertical"
+                  verticalAlign="middle"
+                  align="right"
+                  wrapperStyle={{ paddingLeft: "10px" }}
+                />
+              </RadialBarChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+
+        {/* 气泡图 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>气泡图</CardTitle>
+            <CardDescription>展示三维数据的气泡图</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={bubbleChartConfig} className="h-[300px] w-full">
+              <ScatterChart accessibilityLayer>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" dataKey="x" name="价格" tickLine={false} axisLine={false} />
+                <YAxis type="number" dataKey="y" name="评分" tickLine={false} axisLine={false} />
+                <ZAxis type="number" dataKey="z" range={[40, 400]} name="销量" />
+                <ChartTooltip
+                  cursor={{ strokeDasharray: "3 3" }}
+                  content={<ChartTooltipContent nameKey="category" />}
+                />
+                <Scatter name="产品" data={bubbleChartData} fill="var(--chart-1)" />
+              </ScatterChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* 第五行：混合图和横向柱状图 */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* 混合图 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>混合图</CardTitle>
+            <CardDescription>柱状图与折线图组合展示</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={composedChartConfig} className="h-[300px] w-full">
+              <ComposedChart data={composedChartData} accessibilityLayer>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={10} />
+                <YAxis tickLine={false} axisLine={false} />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Legend />
+                <Bar dataKey="pv" fill="var(--color-pv)" radius={[4, 4, 0, 0]} barSize={20} />
+                <Area
+                  type="monotone"
+                  dataKey="amt"
+                  fill="var(--color-amt)"
+                  stroke="var(--color-amt)"
+                  fillOpacity={0.3}
+                />
+                <Line type="monotone" dataKey="uv" stroke="var(--color-uv)" strokeWidth={2} dot={{ r: 4 }} />
+              </ComposedChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+
+        {/* 横向柱状图 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>横向柱状图</CardTitle>
+            <CardDescription>展示排名对比的横向柱状图</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={horizontalBarConfig} className="h-[300px] w-full">
+              <BarChart data={horizontalBarData} layout="vertical" accessibilityLayer>
+                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                <XAxis type="number" tickLine={false} axisLine={false} />
+                <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} width={60} />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Bar dataKey="value" fill="var(--color-value)" radius={[0, 4, 4, 0]} />
               </BarChart>
             </ChartContainer>
           </CardContent>

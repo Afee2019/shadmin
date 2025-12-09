@@ -86,12 +86,11 @@ function EventDialog({ event, onClose }: EventDialogProps) {
   );
 }
 
-interface DayButtonProps {
+interface DayButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   day: { date: Date };
   modifiers: { outside?: boolean };
   events: CalendarEvent[];
   selectedDate: Date | undefined;
-  onClick?: () => void;
 }
 
 function DayButton({ day, modifiers, events, selectedDate, ...props }: DayButtonProps) {

@@ -87,24 +87,26 @@ export function DataTable<TData, TValue>({
   }
 
   const tableContent = (
-    <Table>
-      <TableHeader className="bg-muted sticky top-0 z-10">
-        {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id}>
-            {headerGroup.headers.map((header) => {
-              return (
-                <TableHead key={header.id} colSpan={header.colSpan}>
-                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                </TableHead>
-              );
-            })}
-          </TableRow>
-        ))}
-      </TableHeader>
-      <TableBody className="**:data-[slot=table-cell]:first:w-8">
-        {renderTableBody({ table, columns, dndEnabled, dataIds })}
-      </TableBody>
-    </Table>
+    <div className="w-full overflow-x-auto">
+      <Table className="min-w-[640px]">
+        <TableHeader className="bg-muted sticky top-0 z-10">
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow key={headerGroup.id}>
+              {headerGroup.headers.map((header) => {
+                return (
+                  <TableHead key={header.id} colSpan={header.colSpan}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </TableHead>
+                );
+              })}
+            </TableRow>
+          ))}
+        </TableHeader>
+        <TableBody className="**:data-[slot=table-cell]:first:w-8">
+          {renderTableBody({ table, columns, dndEnabled, dataIds })}
+        </TableBody>
+      </Table>
+    </div>
   );
 
   if (dndEnabled) {
