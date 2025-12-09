@@ -16,6 +16,8 @@
 - **响应式设计** - 完美适配桌面端和移动端
 - **灵活布局** - 可折叠侧边栏、多种内容宽度选项
 
+![iShot_2025-12-09_18.06.49](https://upic-lisj.oss-cn-beijing.aliyuncs.com/uPic/1765280732-iShot_2025-12-09_18.06.49.png)
+
 ## 技术栈
 
 | 类别 | 技术 |
@@ -43,6 +45,8 @@
 | 学习中心 | `/dashboard/academy` | 在线教育平台 |
 | 物流管理 | `/dashboard/logistics` | 配送、仓储管理 |
 | 销售分析 | `/dashboard/sales` | 销售业绩分析 |
+
+![iShot_2025-12-09_18.14.43](https://upic-lisj.oss-cn-beijing.aliyuncs.com/uPic/1765280755-iShot_2025-12-09_18.14.43.png)
 
 ### 功能页面（20+）
 
@@ -93,6 +97,8 @@
 | Cobalt | 科技钴蓝 |
 | Brutalist | 粗犷风格 |
 | Soft Pop | 柔和流行 |
+
+![iShot_2025-12-09_18.07.32](https://upic-lisj.oss-cn-beijing.aliyuncs.com/uPic/1765280770-iShot_2025-12-09_18.07.32.png)
 
 ## 快速开始
 
@@ -155,6 +161,8 @@ src/
 1. 在 `src/styles/presets/` 创建新的 CSS 文件
 2. 运行 `pnpm generate:presets` 生成类型定义
 3. 新主题会自动出现在设置页面
+
+![iShot_2025-12-09_18.08.00](https://upic-lisj.oss-cn-beijing.aliyuncs.com/uPic/1765280788-iShot_2025-12-09_18.08.00.png)
 
 ## 开源协议
 
