@@ -19,18 +19,18 @@ import {
 
 import { type User } from "./users-data";
 
-const roleColors: Record<User["role"], string> = {
-  管理员: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
-  编辑: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
-  用户: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
-  访客: "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400",
-};
+const roleColors = new Map<User["role"], string>([
+  ["管理员", "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"],
+  ["编辑", "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400"],
+  ["用户", "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"],
+  ["访客", "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400"],
+]);
 
-const statusColors: Record<User["status"], string> = {
-  活跃: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400",
-  待验证: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-  已禁用: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
-};
+const statusColors = new Map<User["status"], string>([
+  ["活跃", "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400"],
+  ["待验证", "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400"],
+  ["已禁用", "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"],
+]);
 
 export const usersColumns: ColumnDef<User>[] = [
   {
@@ -77,7 +77,7 @@ export const usersColumns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       const role = row.getValue("role");
       return (
-        <Badge variant="secondary" className={roleColors[role]}>
+        <Badge variant="secondary" className={roleColors.get(role)}>
           {role}
         </Badge>
       );
@@ -92,7 +92,7 @@ export const usersColumns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       const status = row.getValue("status");
       return (
-        <Badge variant="secondary" className={statusColors[status]}>
+        <Badge variant="secondary" className={statusColors.get(status)}>
           {status}
         </Badge>
       );

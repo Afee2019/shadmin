@@ -18,6 +18,10 @@ import {
   Settings,
   UserCircle,
   CreditCard,
+  Wallet,
+  LayoutGrid,
+  ChartLine,
+  History,
   type LucideIcon,
 } from "lucide-react";
 
@@ -113,6 +117,30 @@ export const sidebarItems: NavGroup[] = [
         isNew: true,
       },
       {
+        title: "账单",
+        url: "/dashboard/billing",
+        icon: Wallet,
+        isNew: true,
+      },
+      {
+        title: "组件",
+        url: "/dashboard/widgets",
+        icon: LayoutGrid,
+        isNew: true,
+      },
+      {
+        title: "图表",
+        url: "/dashboard/charts",
+        icon: ChartLine,
+        isNew: true,
+      },
+      {
+        title: "时间轴",
+        url: "/dashboard/timeline",
+        icon: History,
+        isNew: true,
+      },
+      {
         title: "邮件",
         url: "/dashboard/coming-soon",
         icon: Mail,
@@ -132,9 +160,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "看板",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/kanban",
         icon: Kanban,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "发票",

@@ -33,6 +33,14 @@ export const THEME_PRESET_OPTIONS = [
     },
   },
   {
+    label: "樱桃",
+    value: "cherry",
+    primary: {
+      light: "oklch(0.5 0.2 15)",
+      dark: "oklch(0.6 0.18 15)",
+    },
+  },
+  {
     label: "森林",
     value: "forest",
     primary: {
@@ -54,6 +62,14 @@ export const THEME_PRESET_OPTIONS = [
     primary: {
       light: "oklch(0.48 0.2 250)",
       dark: "oklch(0.62 0.18 250)",
+    },
+  },
+  {
+    label: "薄荷",
+    value: "mint",
+    primary: {
+      light: "oklch(0.6 0.15 165)",
+      dark: "oklch(0.65 0.12 165)",
     },
   },
   {
