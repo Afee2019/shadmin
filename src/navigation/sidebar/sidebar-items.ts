@@ -142,9 +142,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "邮件",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/email",
         icon: Mail,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "聊天",
@@ -154,9 +154,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "日历",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/calendar",
         icon: Calendar,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "看板",
@@ -166,9 +166,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "发票",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/invoice",
         icon: ReceiptText,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "用户",
