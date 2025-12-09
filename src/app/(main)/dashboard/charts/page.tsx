@@ -220,9 +220,9 @@ export default function ChartsPage() {
         </div>
       </FadeIn>
 
-      {/* 第一行：线形图和柱状图 */}
+      {/* 第一行：线形图、柱状图、面积图 */}
       <FadeIn delay={100}>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* 线形图 */}
           <Card>
             <CardHeader>
@@ -268,12 +268,7 @@ export default function ChartsPage() {
               </ChartContainer>
             </CardContent>
           </Card>
-        </div>
-      </FadeIn>
 
-      {/* 第二行：面积图和饼图 */}
-      <FadeIn delay={200}>
-        <div className="grid gap-6 md:grid-cols-2">
           {/* 面积图 */}
           <Card>
             <CardHeader>
@@ -308,7 +303,12 @@ export default function ChartsPage() {
               </ChartContainer>
             </CardContent>
           </Card>
+        </div>
+      </FadeIn>
 
+      {/* 第二行：饼图、雷达图、堆叠柱状图 */}
+      <FadeIn delay={200}>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* 饼图 */}
           <Card>
             <CardHeader>
@@ -337,12 +337,7 @@ export default function ChartsPage() {
               </ChartContainer>
             </CardContent>
           </Card>
-        </div>
-      </FadeIn>
 
-      {/* 第三行：雷达图和堆叠柱状图 */}
-      <FadeIn delay={300}>
-        <div className="grid gap-6 md:grid-cols-2">
           {/* 雷达图 */}
           <Card>
             <CardHeader>
@@ -386,9 +381,9 @@ export default function ChartsPage() {
         </div>
       </FadeIn>
 
-      {/* 第四行：极坐标图和气泡图 */}
-      <FadeIn delay={400}>
-        <div className="grid gap-6 md:grid-cols-2">
+      {/* 第三行：极坐标图、气泡图、混合图 */}
+      <FadeIn delay={300}>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* 极坐标图/玫瑰图 */}
           <Card>
             <CardHeader>
@@ -448,12 +443,7 @@ export default function ChartsPage() {
               </ChartContainer>
             </CardContent>
           </Card>
-        </div>
-      </FadeIn>
 
-      {/* 第五行：混合图和横向柱状图 */}
-      <FadeIn delay={500}>
-        <div className="grid gap-6 md:grid-cols-2">
           {/* 混合图 */}
           <Card>
             <CardHeader>
@@ -481,7 +471,12 @@ export default function ChartsPage() {
               </ChartContainer>
             </CardContent>
           </Card>
+        </div>
+      </FadeIn>
 
+      {/* 第四行：横向柱状图、仪表盘图、环形进度图 */}
+      <FadeIn delay={400}>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* 横向柱状图 */}
           <Card>
             <CardHeader>
@@ -500,12 +495,7 @@ export default function ChartsPage() {
               </ChartContainer>
             </CardContent>
           </Card>
-        </div>
-      </FadeIn>
 
-      {/* 第六行：仪表盘图和环形进度图 */}
-      <FadeIn delay={600}>
-        <div className="grid gap-6 md:grid-cols-2">
           {/* 仪表盘图 */}
           <Card>
             <CardHeader>
@@ -540,9 +530,9 @@ export default function ChartsPage() {
         </div>
       </FadeIn>
 
-      {/* 第七行：漏斗图和树图 */}
-      <FadeIn delay={700}>
-        <div className="grid gap-6 md:grid-cols-2">
+      {/* 第五行：漏斗图和树图 */}
+      <FadeIn delay={500}>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* 漏斗图 */}
           <Card>
             <CardHeader>
@@ -589,7 +579,7 @@ export default function ChartsPage() {
       </FadeIn>
 
       {/* 使用说明 */}
-      <FadeIn delay={800}>
+      <FadeIn delay={600}>
         <Card>
           <CardHeader>
             <CardTitle>图表使用说明</CardTitle>
