@@ -133,7 +133,7 @@ export function GaugeChart({
   const baseY2 = r(centerY - needleWidth * Math.sin(perpRad));
 
   return (
-    <div className={cn("relative flex flex-col items-center", className)} style={{ marginTop: -24 }}>
+    <div className={cn("relative flex flex-col items-center", className)} style={{ marginTop: -48 }}>
       <svg width={size} height={size * 0.7} viewBox={`0 0 ${size} ${size * 0.8}`}>
         {/* 分段弧形 */}
         {segments}
