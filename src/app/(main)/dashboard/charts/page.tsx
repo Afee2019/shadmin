@@ -181,15 +181,19 @@ const horizontalBarConfig = {
 
 // 漏斗图数据
 const funnelData = [
-  { name: "访问", value: 10000, fill: "var(--chart-1)", rate: 100 },
-  { name: "浏览商品", value: 7500, fill: "var(--chart-2)", rate: 75 },
-  { name: "加入购物车", value: 4200, fill: "var(--chart-3)", rate: 42 },
-  { name: "开始结算", value: 2100, fill: "var(--chart-4)", rate: 21 },
-  { name: "完成购买", value: 1200, fill: "var(--chart-5)", rate: 12 },
+  { name: "访问", value: 10000, fill: "var(--color-visit)", rate: 100 },
+  { name: "浏览商品", value: 7500, fill: "var(--color-browse)", rate: 75 },
+  { name: "加入购物车", value: 4200, fill: "var(--color-cart)", rate: 42 },
+  { name: "开始结算", value: 2100, fill: "var(--color-checkout)", rate: 21 },
+  { name: "完成购买", value: 1200, fill: "var(--color-purchase)", rate: 12 },
 ];
 
 const funnelConfig = {
-  value: { label: "人数", color: "var(--chart-1)" },
+  visit: { label: "访问", color: "var(--chart-1)" },
+  browse: { label: "浏览商品", color: "var(--chart-2)" },
+  cart: { label: "加入购物车", color: "var(--chart-3)" },
+  checkout: { label: "开始结算", color: "var(--chart-4)" },
+  purchase: { label: "完成购买", color: "var(--chart-5)" },
 } satisfies ChartConfig;
 
 // 树图数据（使用嵌套柱状图模拟）
