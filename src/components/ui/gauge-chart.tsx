@@ -25,10 +25,10 @@ export function GaugeChart({
   const percentage = ((normalizedValue - min) / (max - min)) * 100;
 
   // SVG 参数
-  const size = 280;
+  const size = 320;
   const centerX = size / 2;
-  const centerY = size / 2;
-  const radius = 100;
+  const centerY = size / 2 + 20;
+  const radius = 120;
 
   // 角度范围：从 135度 到 405度 (270度 的弧形)
   const startAngle = 135;
@@ -56,8 +56,8 @@ export function GaugeChart({
     const startRad = (segStart * Math.PI) / 180;
     const endRad = (segEnd * Math.PI) / 180;
 
-    const innerRadius = radius - 20;
-    const outerRadius = radius + 10;
+    const innerRadius = radius - 15;
+    const outerRadius = radius + 15;
 
     const x1 = centerX + innerRadius * Math.cos(startRad);
     const y1 = centerY + innerRadius * Math.sin(startRad);
@@ -86,15 +86,15 @@ export function GaugeChart({
     const tickRad = (tickAngle * Math.PI) / 180;
 
     // 刻度线
-    const innerTick = radius - 25;
-    const outerTick = radius - 30;
+    const innerTick = radius - 20;
+    const outerTick = radius - 25;
     const x1 = centerX + innerTick * Math.cos(tickRad);
     const y1 = centerY + innerTick * Math.sin(tickRad);
     const x2 = centerX + outerTick * Math.cos(tickRad);
     const y2 = centerY + outerTick * Math.sin(tickRad);
 
     // 标签位置
-    const labelRadius = radius - 45;
+    const labelRadius = radius - 42;
     const labelX = centerX + labelRadius * Math.cos(tickRad);
     const labelY = centerY + labelRadius * Math.sin(tickRad);
 
@@ -116,8 +116,8 @@ export function GaugeChart({
 
   // 指针路径（三角形）
   const needleRad = (needleAngle * Math.PI) / 180;
-  const needleLength = radius - 30;
-  const needleWidth = 8;
+  const needleLength = radius - 25;
+  const needleWidth = 10;
 
   const needleTipX = centerX + needleLength * Math.cos(needleRad);
   const needleTipY = centerY + needleLength * Math.sin(needleRad);
@@ -131,7 +131,7 @@ export function GaugeChart({
 
   return (
     <div className={cn("relative flex flex-col items-center", className)}>
-      <svg width={size} height={size * 0.75} viewBox={`0 0 ${size} ${size * 0.85}`}>
+      <svg width={size} height={size * 0.7} viewBox={`0 0 ${size} ${size * 0.8}`}>
         {/* 分段弧形 */}
         {segments}
 
@@ -141,11 +141,11 @@ export function GaugeChart({
         {/* 指针 */}
         <path
           d={`M ${needleTipX} ${needleTipY} L ${baseX1} ${baseY1} L ${baseX2} ${baseY2} Z`}
-          className="fill-muted-foreground/70"
+          className="fill-muted-foreground/80"
         />
 
         {/* 指针中心圆点 */}
-        <circle cx={centerX} cy={centerY} r={6} className="fill-muted-foreground" />
+        <circle cx={centerX} cy={centerY} r={8} className="fill-muted-foreground" />
 
         {/* 数值显示 */}
         {showValue && (
@@ -153,20 +153,22 @@ export function GaugeChart({
             {label && (
               <text
                 x={centerX}
-                y={centerY + 30}
+                y={centerY + 35}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="fill-muted-foreground text-sm"
+                className="fill-muted-foreground"
+                style={{ fontSize: 14 }}
               >
                 {label}
               </text>
             )}
             <text
               x={centerX}
-              y={centerY + 55}
+              y={centerY + 60}
               textAnchor="middle"
               dominantBaseline="middle"
-              className="fill-foreground text-3xl font-bold"
+              className="fill-foreground font-bold"
+              style={{ fontSize: 28 }}
             >
               {valueFormatter(normalizedValue)}
             </text>
