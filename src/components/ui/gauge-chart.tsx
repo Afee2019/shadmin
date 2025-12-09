@@ -52,8 +52,8 @@ export function GaugeChart({
     const segStart = startAngle + i * (segmentAngle + segmentGap);
     const segEnd = segStart + segmentAngle;
 
-    // 灰度渐变：从深灰到浅灰
-    const grayValue = Math.round(40 + (i / segmentCount) * 50); // 40-90 范围
+    // 灰度渐变：从浅灰到深灰（左浅右深）
+    const grayValue = Math.round(90 - (i / segmentCount) * 50); // 90-40 范围
     const color = `hsl(0, 0%, ${grayValue}%)`;
 
     const startRad = (segStart * Math.PI) / 180;
@@ -133,7 +133,7 @@ export function GaugeChart({
   const baseY2 = r(centerY - needleWidth * Math.sin(perpRad));
 
   return (
-    <div className={cn("relative flex flex-col items-center", className)}>
+    <div className={cn("relative flex flex-col items-center", className)} style={{ marginTop: -24 }}>
       <svg width={size} height={size * 0.7} viewBox={`0 0 ${size} ${size * 0.8}`}>
         {/* 分段弧形 */}
         {segments}
