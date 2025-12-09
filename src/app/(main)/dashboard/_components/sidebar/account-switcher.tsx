@@ -5,6 +5,7 @@ import { useState } from "react";
 import { BadgeCheck, Bell, CreditCard, LogOut } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,10 +32,12 @@ export function AccountSwitcher({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="size-9 rounded-lg">
-          <AvatarImage src={activeUser.avatar || undefined} alt={activeUser.name} />
-          <AvatarFallback className="rounded-lg">{getInitials(activeUser.name)}</AvatarFallback>
-        </Avatar>
+        <Button size="icon" variant="ghost" className="overflow-hidden p-0">
+          <Avatar className="size-full rounded-none">
+            <AvatarImage src={activeUser.avatar || undefined} alt={activeUser.name} />
+            <AvatarFallback className="rounded-none">{getInitials(activeUser.name)}</AvatarFallback>
+          </Avatar>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-56 space-y-1 rounded-lg" side="bottom" align="end" sideOffset={4}>
         {users.map((user) => (
