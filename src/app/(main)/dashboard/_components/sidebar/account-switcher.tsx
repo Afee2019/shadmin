@@ -33,10 +33,14 @@ export function AccountSwitcher({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="ghost" className="overflow-hidden p-0">
-          <Avatar className="bg-muted size-full rounded-none">
-            <AvatarImage src={activeUser.avatar || undefined} alt={activeUser.name} className="rounded-none" />
-            <AvatarFallback className="rounded-none">{getInitials(activeUser.name)}</AvatarFallback>
-          </Avatar>
+          {activeUser.avatar ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={activeUser.avatar} alt={activeUser.name} className="size-full object-cover" />
+          ) : (
+            <span className="bg-muted flex size-full items-center justify-center text-sm font-medium">
+              {getInitials(activeUser.name)}
+            </span>
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-56 space-y-1 rounded-lg" side="bottom" align="end" sideOffset={4}>
