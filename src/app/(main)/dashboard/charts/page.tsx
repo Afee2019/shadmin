@@ -8,6 +8,8 @@ import {
   CartesianGrid,
   Cell,
   ComposedChart,
+  Funnel,
+  FunnelChart,
   LabelList,
   Legend,
   Line,
@@ -181,19 +183,16 @@ const horizontalBarConfig = {
 
 // 漏斗图数据
 const funnelData = [
-  { name: "访问", value: 10000, fill: "var(--color-visit)", rate: 100 },
-  { name: "浏览商品", value: 7500, fill: "var(--color-browse)", rate: 75 },
-  { name: "加入购物车", value: 4200, fill: "var(--color-cart)", rate: 42 },
-  { name: "开始结算", value: 2100, fill: "var(--color-checkout)", rate: 21 },
-  { name: "完成购买", value: 1200, fill: "var(--color-purchase)", rate: 12 },
+  { stage: "访问", value: 10000, fill: "var(--chart-1)" },
+  { stage: "浏览商品", value: 7500, fill: "var(--chart-2)" },
+  { stage: "加入购物车", value: 4200, fill: "var(--chart-3)" },
+  { stage: "开始结算", value: 2100, fill: "var(--chart-4)" },
+  { stage: "完成购买", value: 1200, fill: "var(--chart-5)" },
 ];
 
 const funnelConfig = {
-  visit: { label: "访问", color: "var(--chart-1)" },
-  browse: { label: "浏览商品", color: "var(--chart-2)" },
-  cart: { label: "加入购物车", color: "var(--chart-3)" },
-  checkout: { label: "开始结算", color: "var(--chart-4)" },
-  purchase: { label: "完成购买", color: "var(--chart-5)" },
+  value: { label: "人数", color: "var(--chart-1)" },
+  stage: { label: "阶段" },
 } satisfies ChartConfig;
 
 // 树图数据（使用嵌套柱状图模拟）
@@ -557,41 +556,12 @@ export default function ChartsPage() {
             </CardHeader>
             <CardContent>
               <ChartContainer config={funnelConfig} className="h-[300px] w-full">
-                <BarChart data={funnelData} layout="vertical" accessibilityLayer margin={{ left: 10, right: 50 }}>
-                  <XAxis type="number" hide />
-                  <YAxis
-                    dataKey="name"
-                    type="category"
-                    tickLine={false}
-                    axisLine={false}
-                    width={80}
-                    tick={{ fontSize: 12 }}
-                  />
-                  <ChartTooltip
-                    content={
-                      <ChartTooltipContent
-                        formatter={(value, _name, item) => (
-                          <div className="flex flex-col gap-1">
-                            <div className="font-medium">{item.payload.name}</div>
-                            <div className="text-muted-foreground text-sm">人数: {value.toLocaleString()}</div>
-                            <div className="text-muted-foreground text-sm">转化率: {item.payload.rate}%</div>
-                          </div>
-                        )}
-                      />
-                    }
-                  />
-                  <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={28}>
-                    {funnelData.map((entry) => (
-                      <Cell key={entry.name} fill={entry.fill} />
-                    ))}
-                    <LabelList
-                      dataKey="rate"
-                      position="right"
-                      formatter={(value: number) => `${value}%`}
-                      className="fill-muted-foreground text-xs"
-                    />
-                  </Bar>
-                </BarChart>
+                <FunnelChart margin={{ left: 0, right: 0, top: 0, bottom: 0 }}>
+                  <Funnel className="stroke-card stroke-2" dataKey="value" data={funnelData}>
+                    <LabelList className="fill-foreground stroke-0" dataKey="stage" position="right" offset={10} />
+                    <LabelList className="fill-foreground stroke-0" dataKey="value" position="left" offset={10} />
+                  </Funnel>
+                </FunnelChart>
               </ChartContainer>
             </CardContent>
           </Card>
