@@ -24,6 +24,7 @@ import {
   History,
   Wand2,
   Bell,
+  FolderOpen,
   type LucideIcon,
 } from "lucide-react";
 
@@ -92,9 +93,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "物流管理",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/logistics",
         icon: Forklift,
-        comingSoon: true,
+        isNew: true,
       },
     ],
   },
@@ -194,6 +195,12 @@ export const sidebarItems: NavGroup[] = [
         title: "通知",
         url: "/dashboard/notifications",
         icon: Bell,
+        isNew: true,
+      },
+      {
+        title: "文件",
+        url: "/dashboard/files",
+        icon: FolderOpen,
         isNew: true,
       },
       {
