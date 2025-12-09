@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Cell,
   ComposedChart,
+  LabelList,
   Legend,
   Line,
   LineChart,
@@ -21,6 +22,7 @@ import {
   RadialBarChart,
   Scatter,
   ScatterChart,
+  Treemap,
   XAxis,
   YAxis,
   ZAxis,
@@ -171,6 +173,33 @@ const horizontalBarData = [
 ];
 
 const horizontalBarConfig = {
+  value: { label: "销售额", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
+// 漏斗图数据
+const funnelData = [
+  { name: "访问", value: 10000, fill: "var(--chart-1)", rate: 100 },
+  { name: "浏览商品", value: 7500, fill: "var(--chart-2)", rate: 75 },
+  { name: "加入购物车", value: 4200, fill: "var(--chart-3)", rate: 42 },
+  { name: "开始结算", value: 2100, fill: "var(--chart-4)", rate: 21 },
+  { name: "完成购买", value: 1200, fill: "var(--chart-5)", rate: 12 },
+];
+
+const funnelConfig = {
+  value: { label: "人数", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
+// 树图数据（使用嵌套柱状图模拟）
+const treemapData = [
+  { name: "电子产品", value: 4500, fill: "var(--chart-1)" },
+  { name: "服装鞋帽", value: 3200, fill: "var(--chart-2)" },
+  { name: "食品饮料", value: 2800, fill: "var(--chart-3)" },
+  { name: "家居用品", value: 2100, fill: "var(--chart-4)" },
+  { name: "美妆护肤", value: 1800, fill: "var(--chart-5)" },
+  { name: "运动户外", value: 1200, fill: "var(--chart-1)" },
+];
+
+const treemapConfig = {
   value: { label: "销售额", color: "var(--chart-1)" },
 } satisfies ChartConfig;
 
@@ -445,6 +474,81 @@ export default function ChartsPage() {
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Bar dataKey="value" fill="var(--color-value)" radius={[0, 4, 4, 0]} />
               </BarChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* 第六行：漏斗图和树图 */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* 漏斗图 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>漏斗图</CardTitle>
+            <CardDescription>展示转化流程的漏斗图</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={funnelConfig} className="h-[300px] w-full">
+              <BarChart data={funnelData} layout="vertical" accessibilityLayer margin={{ left: 10, right: 50 }}>
+                <XAxis type="number" hide />
+                <YAxis
+                  dataKey="name"
+                  type="category"
+                  tickLine={false}
+                  axisLine={false}
+                  width={80}
+                  tick={{ fontSize: 12 }}
+                />
+                <ChartTooltip
+                  content={
+                    <ChartTooltipContent
+                      formatter={(value, _name, item) => (
+                        <div className="flex flex-col gap-1">
+                          <div className="font-medium">{item.payload.name}</div>
+                          <div className="text-muted-foreground text-sm">人数: {value.toLocaleString()}</div>
+                          <div className="text-muted-foreground text-sm">转化率: {item.payload.rate}%</div>
+                        </div>
+                      )}
+                    />
+                  }
+                />
+                <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={28}>
+                  {funnelData.map((entry) => (
+                    <Cell key={entry.name} fill={entry.fill} />
+                  ))}
+                  <LabelList
+                    dataKey="rate"
+                    position="right"
+                    formatter={(value: number) => `${value}%`}
+                    className="fill-muted-foreground text-xs"
+                  />
+                </Bar>
+              </BarChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+
+        {/* 树图 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>树图</CardTitle>
+            <CardDescription>展示层级数据的树图</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={treemapConfig} className="h-[300px] w-full">
+              <Treemap
+                data={treemapData}
+                dataKey="value"
+                nameKey="name"
+                aspectRatio={4 / 3}
+                stroke="#fff"
+                fill="var(--chart-1)"
+              >
+                {treemapData.map((entry) => (
+                  <Cell key={entry.name} fill={entry.fill} />
+                ))}
+                <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+              </Treemap>
             </ChartContainer>
           </CardContent>
         </Card>

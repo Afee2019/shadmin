@@ -22,6 +22,7 @@ import {
   LayoutGrid,
   ChartLine,
   History,
+  Wand2,
   type LucideIcon,
 } from "lucide-react";
 
@@ -78,9 +79,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "电子商务",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/ecommerce",
         icon: ShoppingBag,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "在线教育",
@@ -180,6 +181,12 @@ export const sidebarItems: NavGroup[] = [
         title: "角色",
         url: "/dashboard/roles",
         icon: Lock,
+        isNew: true,
+      },
+      {
+        title: "向导",
+        url: "/dashboard/wizard",
+        icon: Wand2,
         isNew: true,
       },
       {
