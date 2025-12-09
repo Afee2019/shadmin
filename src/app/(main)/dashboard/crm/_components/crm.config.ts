@@ -266,8 +266,8 @@ export const recentLeadsData = [
   },
   {
     id: "L-1007",
-    name: "周俊杰",
-    company: "Weblabs Studio",
+    name: " 李绍俊",
+    company: "Shadmin Studio",
     status: "已成交",
     source: "官网",
     lastActivity: "6小时前",

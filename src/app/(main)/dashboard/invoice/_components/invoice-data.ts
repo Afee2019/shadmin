@@ -40,10 +40,10 @@ export const invoices: Invoice[] = [
     dueDate: new Date(2024, 11, 15),
     status: "paid",
     from: {
-      name: "Studio Admin 科技有限公司",
+      name: "北京嘉诚瑞杰信息技术有限公司",
       address: "北京市朝阳区建国路88号 SOHO现代城 A座1208",
       phone: "+86 10 8888 8888",
-      email: "billing@studioadmin.com",
+      email: "billing@shadmin.com",
     },
     to: {
       name: "北京创新科技有限公司",
@@ -85,10 +85,10 @@ export const invoices: Invoice[] = [
     dueDate: new Date(2024, 11, 20),
     status: "pending",
     from: {
-      name: "Studio Admin 科技有限公司",
+      name: "北京嘉诚瑞杰信息技术有限公司",
       address: "北京市朝阳区建国路88号 SOHO现代城 A座1208",
       phone: "+86 10 8888 8888",
-      email: "billing@studioadmin.com",
+      email: "billing@shadmin.com",
     },
     to: {
       name: "上海数字传媒有限公司",
@@ -121,10 +121,10 @@ export const invoices: Invoice[] = [
     dueDate: new Date(2024, 10, 30),
     status: "overdue",
     from: {
-      name: "Studio Admin 科技有限公司",
-      address: "北京市朝阳区建国路88号 SOHO现代城 A座1208",
+      name: "北京嘉诚瑞杰信息技术有限公司",
+      address: "北京市海淀区学清路8号科技财富中心B座1105",
       phone: "+86 10 8888 8888",
-      email: "billing@studioadmin.com",
+      email: "billing@shadmin.com",
     },
     to: {
       name: "深圳互联网科技有限公司",
