@@ -510,16 +510,11 @@ export default function ChartsPage() {
           <Card>
             <CardHeader>
               <CardTitle>仪表盘图</CardTitle>
-              <CardDescription>带刻度和指针的仪表盘图</CardDescription>
+              <CardDescription>带分段刻度和指针的仪表盘</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap items-center justify-center gap-8 py-4">
-                <GaugeChart value={75} label="完成率" size="lg" />
-                <div className="flex flex-col gap-6">
-                  <GaugeChart value={92} label="CPU" size="sm" />
-                  <GaugeChart value={45} label="内存" size="sm" />
-                  <GaugeChart value={68} label="存储" size="sm" />
-                </div>
+              <div className="flex items-center justify-center py-4">
+                <GaugeChart value={67.5} label="完成率" />
               </div>
             </CardContent>
           </Card>

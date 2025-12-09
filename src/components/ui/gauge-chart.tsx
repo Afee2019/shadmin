@@ -6,192 +6,171 @@ interface GaugeChartProps {
   value: number;
   min?: number;
   max?: number;
-  size?: "sm" | "md" | "lg";
   label?: string;
   showValue?: boolean;
   valueFormatter?: (value: number) => string;
-  segments?: { value: number; color: string }[];
   className?: string;
 }
-
-const sizeConfig = {
-  sm: { width: 120, height: 80, strokeWidth: 8, fontSize: 14, labelSize: 10 },
-  md: { width: 180, height: 110, strokeWidth: 12, fontSize: 20, labelSize: 12 },
-  lg: { width: 240, height: 140, strokeWidth: 16, fontSize: 28, labelSize: 14 },
-};
 
 export function GaugeChart({
   value,
   min = 0,
   max = 100,
-  size = "md",
   label,
   showValue = true,
-  valueFormatter = (v) => v.toFixed(1),
-  segments,
+  valueFormatter = (v) => `${v.toFixed(2)}%`,
   className,
 }: GaugeChartProps) {
-  const config = sizeConfig[size];
   const normalizedValue = Math.min(Math.max(value, min), max);
   const percentage = ((normalizedValue - min) / (max - min)) * 100;
 
   // SVG 参数
-  const centerX = config.width / 2;
-  const centerY = config.height - 10;
-  const radius = config.width / 2 - config.strokeWidth - 10;
+  const size = 280;
+  const centerX = size / 2;
+  const centerY = size / 2;
+  const radius = 100;
 
-  // 角度计算 (180度 到 0度 的半圆)
-  const startAngle = 180;
-  const endAngle = 0;
-  const angleRange = startAngle - endAngle;
-  const needleAngle = startAngle - (percentage / 100) * angleRange;
+  // 角度范围：从 135度 到 405度 (270度 的弧形)
+  const startAngle = 135;
+  const endAngle = 405;
+  const angleRange = endAngle - startAngle;
 
-  // 默认分段颜色
-  const defaultSegments = [
-    { value: 30, color: "hsl(var(--chart-2))" }, // 红色区域 0-30
-    { value: 70, color: "hsl(var(--chart-4))" }, // 黄色区域 30-70
-    { value: 100, color: "hsl(var(--chart-1))" }, // 绿色区域 70-100
-  ];
-  const colorSegments = segments || defaultSegments;
+  // 分段数量
+  const segmentCount = 30;
+  const segmentGap = 3; // 分段之间的间隙（度）
+  const segmentAngle = (angleRange - segmentGap * segmentCount) / segmentCount;
 
-  // 生成弧形路径
-  const getArcPath = (startPercent: number, endPercent: number) => {
-    const start = startAngle - (startPercent / 100) * angleRange;
-    const end = startAngle - (endPercent / 100) * angleRange;
-    const startRad = (start * Math.PI) / 180;
-    const endRad = (end * Math.PI) / 180;
+  // 指针角度
+  const needleAngle = startAngle + (percentage / 100) * angleRange;
 
-    const x1 = centerX + radius * Math.cos(startRad);
-    const y1 = centerY - radius * Math.sin(startRad);
-    const x2 = centerX + radius * Math.cos(endRad);
-    const y2 = centerY - radius * Math.sin(endRad);
+  // 生成分段
+  const segments = [];
+  for (let i = 0; i < segmentCount; i++) {
+    const segStart = startAngle + i * (segmentAngle + segmentGap);
+    const segEnd = segStart + segmentAngle;
 
-    const largeArcFlag = endPercent - startPercent > 50 ? 1 : 0;
+    // 灰度渐变：从深灰到浅灰
+    const grayValue = Math.round(40 + (i / segmentCount) * 50); // 40-90 范围
+    const color = `hsl(0, 0%, ${grayValue}%)`;
 
-    return `M ${x1} ${y1} A ${radius} ${radius} 0 ${largeArcFlag} 0 ${x2} ${y2}`;
-  };
+    const startRad = (segStart * Math.PI) / 180;
+    const endRad = (segEnd * Math.PI) / 180;
 
-  // 生成刻度
-  const ticks = [];
-  const tickCount = 10;
-  for (let i = 0; i <= tickCount; i++) {
-    const tickPercent = (i / tickCount) * 100;
-    const tickAngle = startAngle - (tickPercent / 100) * angleRange;
-    const tickRad = (tickAngle * Math.PI) / 180;
+    const innerRadius = radius - 20;
+    const outerRadius = radius + 10;
 
-    const innerTick = radius - config.strokeWidth / 2 - 4;
-    const outerTick = radius + config.strokeWidth / 2 + 4;
-    const labelRadius = radius + config.strokeWidth / 2 + 16;
+    const x1 = centerX + innerRadius * Math.cos(startRad);
+    const y1 = centerY + innerRadius * Math.sin(startRad);
+    const x2 = centerX + outerRadius * Math.cos(startRad);
+    const y2 = centerY + outerRadius * Math.sin(startRad);
+    const x3 = centerX + outerRadius * Math.cos(endRad);
+    const y3 = centerY + outerRadius * Math.sin(endRad);
+    const x4 = centerX + innerRadius * Math.cos(endRad);
+    const y4 = centerY + innerRadius * Math.sin(endRad);
 
-    const x1 = centerX + innerTick * Math.cos(tickRad);
-    const y1 = centerY - innerTick * Math.sin(tickRad);
-    const x2 = centerX + outerTick * Math.cos(tickRad);
-    const y2 = centerY - outerTick * Math.sin(tickRad);
-    const labelX = centerX + labelRadius * Math.cos(tickRad);
-    const labelY = centerY - labelRadius * Math.sin(tickRad);
-
-    const tickValue = min + ((max - min) * i) / tickCount;
-
-    ticks.push(
-      <g key={i}>
-        <line x1={x1} y1={y1} x2={x2} y2={y2} className="stroke-muted-foreground" strokeWidth={i % 5 === 0 ? 2 : 1} />
-        {i % 2 === 0 && (
-          <text
-            x={labelX}
-            y={labelY}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="fill-muted-foreground"
-            style={{ fontSize: config.labelSize - 2 }}
-          >
-            {Math.round(tickValue)}
-          </text>
-        )}
-      </g>
+    segments.push(
+      <path
+        key={i}
+        d={`M ${x1} ${y1} L ${x2} ${y2} A ${outerRadius} ${outerRadius} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${innerRadius} ${innerRadius} 0 0 0 ${x1} ${y1} Z`}
+        fill={color}
+        className="transition-opacity duration-200"
+      />
     );
   }
 
-  // 指针计算
-  const needleRad = (needleAngle * Math.PI) / 180;
-  const needleLength = radius - 8;
-  const needleTipX = centerX + needleLength * Math.cos(needleRad);
-  const needleTipY = centerY - needleLength * Math.sin(needleRad);
+  // 生成刻度标签
+  const tickLabels = [0, 20, 40, 60, 80, 100];
+  const ticks = tickLabels.map((tickValue, index) => {
+    const tickPercent = tickValue;
+    const tickAngle = startAngle + (tickPercent / 100) * angleRange;
+    const tickRad = (tickAngle * Math.PI) / 180;
 
-  // 生成分段弧形
-  let prevPercent = 0;
-  const arcs = colorSegments.map((segment, index) => {
-    const arc = (
-      <path
-        key={index}
-        d={getArcPath(prevPercent, segment.value)}
-        fill="none"
-        stroke={segment.color}
-        strokeWidth={config.strokeWidth}
-        strokeLinecap="round"
-      />
+    // 刻度线
+    const innerTick = radius - 25;
+    const outerTick = radius - 30;
+    const x1 = centerX + innerTick * Math.cos(tickRad);
+    const y1 = centerY + innerTick * Math.sin(tickRad);
+    const x2 = centerX + outerTick * Math.cos(tickRad);
+    const y2 = centerY + outerTick * Math.sin(tickRad);
+
+    // 标签位置
+    const labelRadius = radius - 45;
+    const labelX = centerX + labelRadius * Math.cos(tickRad);
+    const labelY = centerY + labelRadius * Math.sin(tickRad);
+
+    return (
+      <g key={index}>
+        <line x1={x1} y1={y1} x2={x2} y2={y2} className="stroke-muted-foreground/50" strokeWidth={1} />
+        <text
+          x={labelX}
+          y={labelY}
+          textAnchor="middle"
+          dominantBaseline="middle"
+          className="fill-muted-foreground text-xs"
+        >
+          {tickValue}%
+        </text>
+      </g>
     );
-    prevPercent = segment.value;
-    return arc;
   });
+
+  // 指针路径（三角形）
+  const needleRad = (needleAngle * Math.PI) / 180;
+  const needleLength = radius - 30;
+  const needleWidth = 8;
+
+  const needleTipX = centerX + needleLength * Math.cos(needleRad);
+  const needleTipY = centerY + needleLength * Math.sin(needleRad);
+
+  // 指针底部两个点（垂直于指针方向）
+  const perpRad = needleRad + Math.PI / 2;
+  const baseX1 = centerX + needleWidth * Math.cos(perpRad);
+  const baseY1 = centerY + needleWidth * Math.sin(perpRad);
+  const baseX2 = centerX - needleWidth * Math.cos(perpRad);
+  const baseY2 = centerY - needleWidth * Math.sin(perpRad);
 
   return (
     <div className={cn("relative flex flex-col items-center", className)}>
-      <svg width={config.width} height={config.height} viewBox={`0 0 ${config.width} ${config.height}`}>
-        {/* 背景轨道 */}
-        <path
-          d={getArcPath(0, 100)}
-          fill="none"
-          className="stroke-muted"
-          strokeWidth={config.strokeWidth}
-          strokeLinecap="round"
-        />
+      <svg width={size} height={size * 0.75} viewBox={`0 0 ${size} ${size * 0.85}`}>
+        {/* 分段弧形 */}
+        {segments}
 
-        {/* 彩色分段 */}
-        {arcs}
-
-        {/* 刻度 */}
+        {/* 刻度标签 */}
         {ticks}
 
         {/* 指针 */}
-        <line
-          x1={centerX}
-          y1={centerY}
-          x2={needleTipX}
-          y2={needleTipY}
-          className="stroke-foreground"
-          strokeWidth={2}
-          strokeLinecap="round"
+        <path
+          d={`M ${needleTipX} ${needleTipY} L ${baseX1} ${baseY1} L ${baseX2} ${baseY2} Z`}
+          className="fill-muted-foreground/70"
         />
 
         {/* 指针中心圆点 */}
-        <circle cx={centerX} cy={centerY} r={4} className="fill-foreground" />
+        <circle cx={centerX} cy={centerY} r={6} className="fill-muted-foreground" />
 
         {/* 数值显示 */}
         {showValue && (
-          <text
-            x={centerX}
-            y={centerY - 20}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="fill-foreground font-bold"
-            style={{ fontSize: config.fontSize }}
-          >
-            {valueFormatter(normalizedValue)}
-          </text>
-        )}
-
-        {/* 标签 */}
-        {label && (
-          <text
-            x={centerX}
-            y={centerY - 20 - config.fontSize}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="fill-muted-foreground"
-            style={{ fontSize: config.labelSize }}
-          >
-            {label}
-          </text>
+          <>
+            {label && (
+              <text
+                x={centerX}
+                y={centerY + 30}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className="fill-muted-foreground text-sm"
+              >
+                {label}
+              </text>
+            )}
+            <text
+              x={centerX}
+              y={centerY + 55}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="fill-foreground text-3xl font-bold"
+            >
+              {valueFormatter(normalizedValue)}
+            </text>
+          </>
         )}
       </svg>
     </div>
