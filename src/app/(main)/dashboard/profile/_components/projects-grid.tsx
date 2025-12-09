@@ -93,8 +93,8 @@ export function ProjectsGrid() {
           <CardContent className="pb-2">
             {/* 团队成员头像 */}
             <div className="flex -space-x-2">
-              {project.members.slice(0, 4).map((member, index) => (
-                <Avatar key={index} className="border-background h-8 w-8 border-2">
+              {project.members.slice(0, 4).map((member) => (
+                <Avatar key={member.name} className="border-background h-8 w-8 border-2">
                   <AvatarImage src={member.avatar} alt={member.name} />
                   <AvatarFallback className="text-xs">{member.name[0]}</AvatarFallback>
                 </Avatar>

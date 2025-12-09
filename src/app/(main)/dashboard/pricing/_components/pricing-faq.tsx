@@ -20,8 +20,8 @@ export function PricingFaq({ items }: PricingFaqProps) {
       </div>
 
       <Accordion type="single" collapsible className="w-full">
-        {items.map((item, index) => (
-          <AccordionItem key={index} value={`item-${index}`}>
+        {items.map((item) => (
+          <AccordionItem key={item.question} value={item.question}>
             <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">{item.answer}</AccordionContent>
           </AccordionItem>

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 export interface TimelineEvent {
+  id: string;
   color: "primary" | "secondary" | "success" | "warning" | "error" | "info";
   icon: LucideIcon;
   title: string;
@@ -25,6 +26,7 @@ export interface TimelineEvent {
 
 export const timelineEvents: TimelineEvent[] = [
   {
+    id: "event-1",
     color: "success",
     icon: Bell,
     title: "¥2400，设计变更",
@@ -33,6 +35,7 @@ export const timelineEvents: TimelineEvent[] = [
     badges: ["设计"],
   },
   {
+    id: "event-2",
     color: "error",
     icon: Package,
     title: "新订单 #1832412",
@@ -41,6 +44,7 @@ export const timelineEvents: TimelineEvent[] = [
     badges: ["订单", "#1832412"],
   },
   {
+    id: "event-3",
     color: "info",
     icon: ShoppingCart,
     title: "四月服务器付款",
@@ -49,6 +53,7 @@ export const timelineEvents: TimelineEvent[] = [
     badges: ["服务器", "付款"],
   },
   {
+    id: "event-4",
     color: "warning",
     icon: CreditCard,
     title: "订单 #4395133 添加了新卡",
@@ -57,6 +62,7 @@ export const timelineEvents: TimelineEvent[] = [
     badges: ["卡片", "#4395133", "优先"],
   },
   {
+    id: "event-5",
     color: "primary",
     icon: Key,
     title: "解锁开发包",
@@ -65,6 +71,7 @@ export const timelineEvents: TimelineEvent[] = [
     badges: ["开发"],
   },
   {
+    id: "event-6",
     color: "success",
     icon: Mail,
     title: "新消息未读",
@@ -73,6 +80,7 @@ export const timelineEvents: TimelineEvent[] = [
     badges: ["消息"],
   },
   {
+    id: "event-7",
     color: "info",
     icon: Megaphone,
     title: "通知未读",
@@ -80,6 +88,7 @@ export const timelineEvents: TimelineEvent[] = [
     description: "系统更新通知：v2.0 版本即将发布。",
   },
   {
+    id: "event-8",
     color: "warning",
     icon: Archive,
     title: "新请求",
@@ -88,6 +97,7 @@ export const timelineEvents: TimelineEvent[] = [
     badges: ["请求", "优先"],
   },
   {
+    id: "event-9",
     color: "secondary",
     icon: Gamepad2,
     title: "控制器问题",
@@ -99,6 +109,7 @@ export const timelineEvents: TimelineEvent[] = [
 
 export const projectTimeline: TimelineEvent[] = [
   {
+    id: "proj-1",
     color: "success",
     icon: CheckCircle,
     title: "项目启动",
@@ -107,6 +118,7 @@ export const projectTimeline: TimelineEvent[] = [
     badges: ["里程碑"],
   },
   {
+    id: "proj-2",
     color: "info",
     icon: Clock,
     title: "需求分析完成",
@@ -115,6 +127,7 @@ export const projectTimeline: TimelineEvent[] = [
     badges: ["分析", "文档"],
   },
   {
+    id: "proj-3",
     color: "primary",
     icon: Key,
     title: "开发阶段开始",
@@ -123,6 +136,7 @@ export const projectTimeline: TimelineEvent[] = [
     badges: ["开发"],
   },
   {
+    id: "proj-4",
     color: "warning",
     icon: AlertCircle,
     title: "发现技术债务",
@@ -131,6 +145,7 @@ export const projectTimeline: TimelineEvent[] = [
     badges: ["技术债务", "待处理"],
   },
   {
+    id: "proj-5",
     color: "success",
     icon: CheckCircle,
     title: "第一阶段完成",

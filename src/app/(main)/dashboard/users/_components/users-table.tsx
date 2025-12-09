@@ -32,7 +32,7 @@ export function UsersTable() {
             <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
             <Input
               placeholder="搜索用户..."
-              value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+              value={String(table.getColumn("name")?.getFilterValue() ?? "")}
               onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
               className="w-full pl-9"
             />

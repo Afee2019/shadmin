@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { Settings, CircleHelp, Search, Database, ClipboardList, File, Command } from "lucide-react";
+import { Command } from "lucide-react";
 
 import {
   Sidebar,
@@ -19,43 +19,6 @@ import { sidebarItems } from "@/navigation/sidebar/sidebar-items";
 
 import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
-
-const data = {
-  navSecondary: [
-    {
-      title: "设置",
-      url: "#",
-      icon: Settings,
-    },
-    {
-      title: "帮助",
-      url: "#",
-      icon: CircleHelp,
-    },
-    {
-      title: "搜索",
-      url: "#",
-      icon: Search,
-    },
-  ],
-  documents: [
-    {
-      name: "数据库",
-      url: "#",
-      icon: Database,
-    },
-    {
-      name: "报告",
-      url: "#",
-      icon: ClipboardList,
-    },
-    {
-      name: "文档助手",
-      url: "#",
-      icon: File,
-    },
-  ],
-};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (

@@ -40,6 +40,7 @@ export function useDataTableInstance<TData, TValue>({
     pageSize: defaultPageSize ?? 10,
   });
 
+  // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API is intentionally used
   const table = useReactTable({
     data,
     columns,
@@ -51,7 +52,7 @@ export function useDataTableInstance<TData, TValue>({
       pagination,
     },
     enableRowSelection,
-    getRowId: getRowId ?? ((row) => (row as any).id.toString()),
+    getRowId: getRowId ?? ((row) => String((row as { id: string | number }).id)),
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,

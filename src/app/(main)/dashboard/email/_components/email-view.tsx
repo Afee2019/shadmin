@@ -36,20 +36,22 @@ interface EmailViewProps {
   className?: string;
 }
 
-const fileIconMap: Record<string, React.ElementType> = {
-  pdf: FileText,
-  pptx: FileText,
-  doc: FileText,
-  docx: FileText,
-  jpg: Image,
-  png: Image,
-  gif: Image,
-  figma: Image,
-  zip: FileArchive,
-  rar: FileArchive,
+const getFileIcon = (type: string): React.ElementType => {
+  const icons: Record<string, React.ElementType> = {
+    pdf: FileText,
+    pptx: FileText,
+    doc: FileText,
+    docx: FileText,
+    jpg: Image,
+    png: Image,
+    gif: Image,
+    figma: Image,
+    zip: FileArchive,
+    rar: FileArchive,
+  };
+  // eslint-disable-next-line security/detect-object-injection -- type is from trusted attachment data
+  return Object.prototype.hasOwnProperty.call(icons, type) ? icons[type] : Paperclip;
 };
-
-const getFileIcon = (type: string) => fileIconMap[type] ?? Paperclip;
 
 export function EmailView({ email, className }: EmailViewProps) {
   if (!email) {

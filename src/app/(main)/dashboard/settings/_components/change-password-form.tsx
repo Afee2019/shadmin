@@ -39,8 +39,8 @@ export function ChangePasswordForm() {
             <div className="bg-muted/50 rounded-lg p-4">
               <h4 className="mb-3 text-sm font-medium">密码要求</h4>
               <ul className="space-y-2">
-                {passwordRequirements.map((requirement, index) => (
-                  <li key={index} className="text-muted-foreground flex items-center gap-2 text-sm">
+                {passwordRequirements.map((requirement) => (
+                  <li key={requirement} className="text-muted-foreground flex items-center gap-2 text-sm">
                     <Check className="text-muted-foreground/50 h-4 w-4" />
                     <span>{requirement}</span>
                   </li>

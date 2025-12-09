@@ -25,7 +25,7 @@ export default function TimelinePage() {
             <Timeline>
               {timelineEvents.map((event, index) => (
                 <TimelineItem
-                  key={`${event.title}-${index}`}
+                  key={event.id}
                   color={event.color}
                   icon={<event.icon className="h-4 w-4" />}
                   title={event.title}
@@ -48,7 +48,7 @@ export default function TimelinePage() {
             <Timeline variant="dark">
               {projectTimeline.map((event, index) => (
                 <TimelineItem
-                  key={`${event.title}-${index}`}
+                  key={event.id}
                   color={event.color}
                   icon={<event.icon className="h-4 w-4" />}
                   title={event.title}
