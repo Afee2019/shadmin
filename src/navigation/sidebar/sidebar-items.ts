@@ -23,6 +23,7 @@ import {
   ChartLine,
   History,
   Wand2,
+  Bell,
   type LucideIcon,
 } from "lucide-react";
 
@@ -85,9 +86,9 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "在线教育",
-        url: "/dashboard/coming-soon",
+        url: "/dashboard/academy",
         icon: GraduationCap,
-        comingSoon: true,
+        isNew: true,
       },
       {
         title: "物流管理",
@@ -187,6 +188,12 @@ export const sidebarItems: NavGroup[] = [
         title: "向导",
         url: "/dashboard/wizard",
         icon: Wand2,
+        isNew: true,
+      },
+      {
+        title: "通知",
+        url: "/dashboard/notifications",
+        icon: Bell,
         isNew: true,
       },
       {
