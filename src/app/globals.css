@@ -2,8 +2,19 @@
 @import "tw-animate-css";
 
 /* Theme preset styles: these override CSS variables based on the selected data-theme-preset */
+@import "../styles/presets/amber.css";
 @import "../styles/presets/brutalist.css";
+@import "../styles/presets/cherry.css";
+@import "../styles/presets/cobalt.css";
+@import "../styles/presets/forest.css";
+@import "../styles/presets/lavender.css";
+@import "../styles/presets/midnight.css";
+@import "../styles/presets/mint.css";
+@import "../styles/presets/ocean.css";
+@import "../styles/presets/rose.css";
+@import "../styles/presets/slate.css";
 @import "../styles/presets/soft-pop.css";
+@import "../styles/presets/sunset.css";
 @import "../styles/presets/tangerine.css";
 
 @custom-variant dark (&:is(.dark *));
