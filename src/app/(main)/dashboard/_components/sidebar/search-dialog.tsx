@@ -19,7 +19,7 @@ const searchItems = [
   { group: "仪表盘", icon: ChartBar, label: "客户管理", disabled: true },
   { group: "仪表盘", icon: Gauge, label: "数据分析", disabled: true },
   { group: "仪表盘", icon: ShoppingBag, label: "电子商务", disabled: true },
-  { group: "仪表盘", icon: GraduationCap, label: "在线教育", disabled: true },
+  { group: "仪表盘", icon: GraduationCap, label: "学习中心", disabled: true },
   { group: "仪表盘", icon: Forklift, label: "物流管理", disabled: true },
   { group: "身份验证", label: "登录 v1" },
   { group: "身份验证", label: "登录 v2" },

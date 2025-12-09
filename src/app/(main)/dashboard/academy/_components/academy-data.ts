@@ -1,4 +1,4 @@
-// Academy 在线教育仪表盘数据
+// Academy 学习中心仪表盘数据
 
 export interface Course {
   id: string;

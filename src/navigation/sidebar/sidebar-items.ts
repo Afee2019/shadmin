@@ -88,7 +88,7 @@ export const sidebarItems: NavGroup[] = [
         isNew: true,
       },
       {
-        title: "在线教育",
+        title: "学习中心",
         url: "/dashboard/academy",
         icon: GraduationCap,
         isNew: true,
