@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 
-import { Menu, Search, RefreshCw, Settings } from "lucide-react";
+import { Menu, RefreshCw, Search, Settings } from "lucide-react";
 
+import { FadeIn } from "@/components/animation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
@@ -31,7 +32,7 @@ export default function EmailPage() {
   });
 
   return (
-    <div className="flex h-[calc(100vh-8rem)] flex-col">
+    <FadeIn className="flex h-[calc(100vh-8rem)] flex-col">
       {/* 顶部工具栏 */}
       <div className="flex items-center gap-2 border-b px-4 py-2">
         {/* 移动端菜单 */}
@@ -99,6 +100,6 @@ export default function EmailPage() {
           </ResizablePanelGroup>
         </div>
       </div>
-    </div>
+    </FadeIn>
   );
 }

@@ -1,3 +1,5 @@
+import { FadeIn } from "@/components/animation";
+
 import { AppearanceSettings } from "./_components/appearance-settings";
 import { BasicInfoForm } from "./_components/basic-info-form";
 import { ChangePasswordForm } from "./_components/change-password-form";
@@ -8,7 +10,7 @@ import { SettingsSidebar } from "./_components/settings-sidebar";
 
 export default function SettingsPage() {
   return (
-    <div className="@container/main flex flex-1 flex-col gap-4 p-4 md:gap-6 md:p-6">
+    <FadeIn className="@container/main flex flex-1 flex-col gap-4 p-4 md:gap-6 md:p-6">
       <div className="flex flex-col gap-6 lg:flex-row">
         {/* 左侧导航 */}
         <aside className="w-full lg:w-64 lg:shrink-0">
@@ -48,6 +50,6 @@ export default function SettingsPage() {
           </section>
         </main>
       </div>
-    </div>
+    </FadeIn>
   );
 }

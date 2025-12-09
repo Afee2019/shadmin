@@ -28,6 +28,7 @@ import {
   ZAxis,
 } from "recharts";
 
+import { FadeIn } from "@/components/animation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
@@ -207,388 +208,410 @@ export default function ChartsPage() {
   return (
     <div className="space-y-8 py-6">
       {/* 页面标题 */}
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">图表展示</h1>
-        <p className="text-muted-foreground">预览模板中可用的各种图表类型</p>
-      </div>
+      <FadeIn>
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">图表展示</h1>
+          <p className="text-muted-foreground">预览模板中可用的各种图表类型</p>
+        </div>
+      </FadeIn>
 
       {/* 第一行：线形图和柱状图 */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* 线形图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>线形图</CardTitle>
-            <CardDescription>展示趋势变化的折线图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={lineChartConfig} className="h-[300px] w-full">
-              <LineChart data={lineChartData} accessibilityLayer>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={10} />
-                <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend />
-                <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={{ r: 4 }} />
-                <Line type="monotone" dataKey="mobile" stroke="var(--color-mobile)" strokeWidth={2} dot={{ r: 4 }} />
-              </LineChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+      <FadeIn delay={100}>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* 线形图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>线形图</CardTitle>
+              <CardDescription>展示趋势变化的折线图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={lineChartConfig} className="h-[300px] w-full">
+                <LineChart data={lineChartData} accessibilityLayer>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={10} />
+                  <YAxis tickLine={false} axisLine={false} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="desktop"
+                    stroke="var(--color-desktop)"
+                    strokeWidth={2}
+                    dot={{ r: 4 }}
+                  />
+                  <Line type="monotone" dataKey="mobile" stroke="var(--color-mobile)" strokeWidth={2} dot={{ r: 4 }} />
+                </LineChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
 
-        {/* 柱状图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>柱状图</CardTitle>
-            <CardDescription>展示数据对比的柱状图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={barChartConfig} className="h-[300px] w-full">
-              <BarChart data={barChartData} accessibilityLayer>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={10} />
-                <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="value" fill="var(--color-value)" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
+          {/* 柱状图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>柱状图</CardTitle>
+              <CardDescription>展示数据对比的柱状图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={barChartConfig} className="h-[300px] w-full">
+                <BarChart data={barChartData} accessibilityLayer>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={10} />
+                  <YAxis tickLine={false} axisLine={false} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Bar dataKey="value" fill="var(--color-value)" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
+      </FadeIn>
 
       {/* 第二行：面积图和饼图 */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* 面积图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>面积图</CardTitle>
-            <CardDescription>展示累计数据的面积图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={areaChartConfig} className="h-[300px] w-full">
-              <AreaChart data={areaChartData} accessibilityLayer>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={10} />
-                <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend />
-                <Area
-                  type="monotone"
-                  dataKey="revenue"
-                  stackId="1"
-                  stroke="var(--color-revenue)"
-                  fill="var(--color-revenue)"
-                  fillOpacity={0.4}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="expense"
-                  stackId="1"
-                  stroke="var(--color-expense)"
-                  fill="var(--color-expense)"
-                  fillOpacity={0.4}
-                />
-              </AreaChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+      <FadeIn delay={200}>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* 面积图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>面积图</CardTitle>
+              <CardDescription>展示累计数据的面积图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={areaChartConfig} className="h-[300px] w-full">
+                <AreaChart data={areaChartData} accessibilityLayer>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={10} />
+                  <YAxis tickLine={false} axisLine={false} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Legend />
+                  <Area
+                    type="monotone"
+                    dataKey="revenue"
+                    stackId="1"
+                    stroke="var(--color-revenue)"
+                    fill="var(--color-revenue)"
+                    fillOpacity={0.4}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="expense"
+                    stackId="1"
+                    stroke="var(--color-expense)"
+                    fill="var(--color-expense)"
+                    fillOpacity={0.4}
+                  />
+                </AreaChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
 
-        {/* 饼图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>饼图</CardTitle>
-            <CardDescription>展示占比分布的饼图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={pieChartConfig} className="mx-auto h-[300px] w-full">
-              <PieChart>
-                <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
-                <Pie
-                  data={pieChartData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={100}
-                  paddingAngle={2}
-                  dataKey="value"
-                >
-                  {pieChartData.map((entry) => (
-                    <Cell key={entry.name} fill={entry.fill} />
-                  ))}
-                </Pie>
-                <Legend />
-              </PieChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
+          {/* 饼图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>饼图</CardTitle>
+              <CardDescription>展示占比分布的饼图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={pieChartConfig} className="mx-auto h-[300px] w-full">
+                <PieChart>
+                  <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+                  <Pie
+                    data={pieChartData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={100}
+                    paddingAngle={2}
+                    dataKey="value"
+                  >
+                    {pieChartData.map((entry) => (
+                      <Cell key={entry.name} fill={entry.fill} />
+                    ))}
+                  </Pie>
+                  <Legend />
+                </PieChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
+      </FadeIn>
 
       {/* 第三行：雷达图和堆叠柱状图 */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* 雷达图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>雷达图</CardTitle>
-            <CardDescription>展示多维数据的雷达图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={radarChartConfig} className="mx-auto h-[300px] w-full">
-              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarChartData}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="subject" />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Radar name="本月" dataKey="A" stroke="var(--color-A)" fill="var(--color-A)" fillOpacity={0.5} />
-                <Radar name="上月" dataKey="B" stroke="var(--color-B)" fill="var(--color-B)" fillOpacity={0.5} />
-                <Legend />
-              </RadarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+      <FadeIn delay={300}>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* 雷达图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>雷达图</CardTitle>
+              <CardDescription>展示多维数据的雷达图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={radarChartConfig} className="mx-auto h-[300px] w-full">
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarChartData}>
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="subject" />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Radar name="本月" dataKey="A" stroke="var(--color-A)" fill="var(--color-A)" fillOpacity={0.5} />
+                  <Radar name="上月" dataKey="B" stroke="var(--color-B)" fill="var(--color-B)" fillOpacity={0.5} />
+                  <Legend />
+                </RadarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
 
-        {/* 堆叠柱状图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>堆叠柱状图</CardTitle>
-            <CardDescription>展示组成对比的堆叠柱状图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={stackedBarConfig} className="h-[300px] w-full">
-              <BarChart data={stackedBarData} accessibilityLayer>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={10} />
-                <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend />
-                <Bar dataKey="product" stackId="a" fill="var(--color-product)" radius={[0, 0, 0, 0]} />
-                <Bar dataKey="service" stackId="a" fill="var(--color-service)" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
+          {/* 堆叠柱状图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>堆叠柱状图</CardTitle>
+              <CardDescription>展示组成对比的堆叠柱状图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={stackedBarConfig} className="h-[300px] w-full">
+                <BarChart data={stackedBarData} accessibilityLayer>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={10} />
+                  <YAxis tickLine={false} axisLine={false} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Legend />
+                  <Bar dataKey="product" stackId="a" fill="var(--color-product)" radius={[0, 0, 0, 0]} />
+                  <Bar dataKey="service" stackId="a" fill="var(--color-service)" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
+      </FadeIn>
 
       {/* 第四行：极坐标图和气泡图 */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* 极坐标图/玫瑰图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>极坐标图</CardTitle>
-            <CardDescription>展示占比分布的玫瑰图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={radialBarConfig} className="mx-auto h-[300px] w-full">
-              <RadialBarChart
-                cx="50%"
-                cy="50%"
-                innerRadius="20%"
-                outerRadius="90%"
-                data={radialBarData}
-                startAngle={90}
-                endAngle={-270}
-              >
-                <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
-                <RadialBar
-                  background
-                  dataKey="value"
-                  cornerRadius={4}
-                  label={{ position: "insideStart", fill: "#fff", fontSize: 12 }}
-                />
-                <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
-                <Legend
-                  iconSize={10}
-                  layout="vertical"
-                  verticalAlign="middle"
-                  align="right"
-                  wrapperStyle={{ paddingLeft: "10px" }}
-                />
-              </RadialBarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+      <FadeIn delay={400}>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* 极坐标图/玫瑰图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>极坐标图</CardTitle>
+              <CardDescription>展示占比分布的玫瑰图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={radialBarConfig} className="mx-auto h-[300px] w-full">
+                <RadialBarChart
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="20%"
+                  outerRadius="90%"
+                  data={radialBarData}
+                  startAngle={90}
+                  endAngle={-270}
+                >
+                  <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
+                  <RadialBar
+                    background
+                    dataKey="value"
+                    cornerRadius={4}
+                    label={{ position: "insideStart", fill: "#fff", fontSize: 12 }}
+                  />
+                  <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+                  <Legend
+                    iconSize={10}
+                    layout="vertical"
+                    verticalAlign="middle"
+                    align="right"
+                    wrapperStyle={{ paddingLeft: "10px" }}
+                  />
+                </RadialBarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
 
-        {/* 气泡图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>气泡图</CardTitle>
-            <CardDescription>展示三维数据的气泡图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={bubbleChartConfig} className="h-[300px] w-full">
-              <ScatterChart accessibilityLayer>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" dataKey="x" name="价格" tickLine={false} axisLine={false} />
-                <YAxis type="number" dataKey="y" name="评分" tickLine={false} axisLine={false} />
-                <ZAxis type="number" dataKey="z" range={[40, 400]} name="销量" />
-                <ChartTooltip
-                  cursor={{ strokeDasharray: "3 3" }}
-                  content={<ChartTooltipContent nameKey="category" />}
-                />
-                <Scatter name="产品" data={bubbleChartData} fill="var(--chart-1)" />
-              </ScatterChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
+          {/* 气泡图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>气泡图</CardTitle>
+              <CardDescription>展示三维数据的气泡图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={bubbleChartConfig} className="h-[300px] w-full">
+                <ScatterChart accessibilityLayer>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis type="number" dataKey="x" name="价格" tickLine={false} axisLine={false} />
+                  <YAxis type="number" dataKey="y" name="评分" tickLine={false} axisLine={false} />
+                  <ZAxis type="number" dataKey="z" range={[40, 400]} name="销量" />
+                  <ChartTooltip
+                    cursor={{ strokeDasharray: "3 3" }}
+                    content={<ChartTooltipContent nameKey="category" />}
+                  />
+                  <Scatter name="产品" data={bubbleChartData} fill="var(--chart-1)" />
+                </ScatterChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
+      </FadeIn>
 
       {/* 第五行：混合图和横向柱状图 */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* 混合图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>混合图</CardTitle>
-            <CardDescription>柱状图与折线图组合展示</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={composedChartConfig} className="h-[300px] w-full">
-              <ComposedChart data={composedChartData} accessibilityLayer>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={10} />
-                <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend />
-                <Bar dataKey="pv" fill="var(--color-pv)" radius={[4, 4, 0, 0]} barSize={20} />
-                <Area
-                  type="monotone"
-                  dataKey="amt"
-                  fill="var(--color-amt)"
-                  stroke="var(--color-amt)"
-                  fillOpacity={0.3}
-                />
-                <Line type="monotone" dataKey="uv" stroke="var(--color-uv)" strokeWidth={2} dot={{ r: 4 }} />
-              </ComposedChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+      <FadeIn delay={500}>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* 混合图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>混合图</CardTitle>
+              <CardDescription>柱状图与折线图组合展示</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={composedChartConfig} className="h-[300px] w-full">
+                <ComposedChart data={composedChartData} accessibilityLayer>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="name" tickLine={false} axisLine={false} tickMargin={10} />
+                  <YAxis tickLine={false} axisLine={false} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Legend />
+                  <Bar dataKey="pv" fill="var(--color-pv)" radius={[4, 4, 0, 0]} barSize={20} />
+                  <Area
+                    type="monotone"
+                    dataKey="amt"
+                    fill="var(--color-amt)"
+                    stroke="var(--color-amt)"
+                    fillOpacity={0.3}
+                  />
+                  <Line type="monotone" dataKey="uv" stroke="var(--color-uv)" strokeWidth={2} dot={{ r: 4 }} />
+                </ComposedChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
 
-        {/* 横向柱状图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>横向柱状图</CardTitle>
-            <CardDescription>展示排名对比的横向柱状图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={horizontalBarConfig} className="h-[300px] w-full">
-              <BarChart data={horizontalBarData} layout="vertical" accessibilityLayer>
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                <XAxis type="number" tickLine={false} axisLine={false} />
-                <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} width={60} />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="value" fill="var(--color-value)" radius={[0, 4, 4, 0]} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
+          {/* 横向柱状图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>横向柱状图</CardTitle>
+              <CardDescription>展示排名对比的横向柱状图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={horizontalBarConfig} className="h-[300px] w-full">
+                <BarChart data={horizontalBarData} layout="vertical" accessibilityLayer>
+                  <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                  <XAxis type="number" tickLine={false} axisLine={false} />
+                  <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} width={60} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Bar dataKey="value" fill="var(--color-value)" radius={[0, 4, 4, 0]} />
+                </BarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
+      </FadeIn>
 
       {/* 第六行：漏斗图和树图 */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* 漏斗图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>漏斗图</CardTitle>
-            <CardDescription>展示转化流程的漏斗图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={funnelConfig} className="h-[300px] w-full">
-              <BarChart data={funnelData} layout="vertical" accessibilityLayer margin={{ left: 10, right: 50 }}>
-                <XAxis type="number" hide />
-                <YAxis
-                  dataKey="name"
-                  type="category"
-                  tickLine={false}
-                  axisLine={false}
-                  width={80}
-                  tick={{ fontSize: 12 }}
-                />
-                <ChartTooltip
-                  content={
-                    <ChartTooltipContent
-                      formatter={(value, _name, item) => (
-                        <div className="flex flex-col gap-1">
-                          <div className="font-medium">{item.payload.name}</div>
-                          <div className="text-muted-foreground text-sm">人数: {value.toLocaleString()}</div>
-                          <div className="text-muted-foreground text-sm">转化率: {item.payload.rate}%</div>
-                        </div>
-                      )}
+      <FadeIn delay={600}>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* 漏斗图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>漏斗图</CardTitle>
+              <CardDescription>展示转化流程的漏斗图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={funnelConfig} className="h-[300px] w-full">
+                <BarChart data={funnelData} layout="vertical" accessibilityLayer margin={{ left: 10, right: 50 }}>
+                  <XAxis type="number" hide />
+                  <YAxis
+                    dataKey="name"
+                    type="category"
+                    tickLine={false}
+                    axisLine={false}
+                    width={80}
+                    tick={{ fontSize: 12 }}
+                  />
+                  <ChartTooltip
+                    content={
+                      <ChartTooltipContent
+                        formatter={(value, _name, item) => (
+                          <div className="flex flex-col gap-1">
+                            <div className="font-medium">{item.payload.name}</div>
+                            <div className="text-muted-foreground text-sm">人数: {value.toLocaleString()}</div>
+                            <div className="text-muted-foreground text-sm">转化率: {item.payload.rate}%</div>
+                          </div>
+                        )}
+                      />
+                    }
+                  />
+                  <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={28}>
+                    {funnelData.map((entry) => (
+                      <Cell key={entry.name} fill={entry.fill} />
+                    ))}
+                    <LabelList
+                      dataKey="rate"
+                      position="right"
+                      formatter={(value: number) => `${value}%`}
+                      className="fill-muted-foreground text-xs"
                     />
-                  }
-                />
-                <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={28}>
-                  {funnelData.map((entry) => (
+                  </Bar>
+                </BarChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+
+          {/* 树图 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>树图</CardTitle>
+              <CardDescription>展示层级数据的树图</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={treemapConfig} className="h-[300px] w-full">
+                <Treemap
+                  data={treemapData}
+                  dataKey="value"
+                  nameKey="name"
+                  aspectRatio={4 / 3}
+                  stroke="#fff"
+                  fill="var(--chart-1)"
+                >
+                  {treemapData.map((entry) => (
                     <Cell key={entry.name} fill={entry.fill} />
                   ))}
-                  <LabelList
-                    dataKey="rate"
-                    position="right"
-                    formatter={(value: number) => `${value}%`}
-                    className="fill-muted-foreground text-xs"
-                  />
-                </Bar>
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-
-        {/* 树图 */}
-        <Card>
-          <CardHeader>
-            <CardTitle>树图</CardTitle>
-            <CardDescription>展示层级数据的树图</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={treemapConfig} className="h-[300px] w-full">
-              <Treemap
-                data={treemapData}
-                dataKey="value"
-                nameKey="name"
-                aspectRatio={4 / 3}
-                stroke="#fff"
-                fill="var(--chart-1)"
-              >
-                {treemapData.map((entry) => (
-                  <Cell key={entry.name} fill={entry.fill} />
-                ))}
-                <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
-              </Treemap>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-      </div>
+                  <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+                </Treemap>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
+      </FadeIn>
 
       {/* 使用说明 */}
-      <Card>
-        <CardHeader>
-          <CardTitle>图表使用说明</CardTitle>
-          <CardDescription>基于 Recharts 库构建的图表系统</CardDescription>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p className="text-muted-foreground">
-            本模板使用 <code>recharts</code> 作为图表库，并通过 <code>ChartContainer</code> 组件进行封装，
-            支持主题颜色变量和响应式布局。图表颜色会自动适配当前主题预设。
-          </p>
-          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded bg-[var(--chart-1)]" />
-              <span className="text-sm">chart-1</span>
+      <FadeIn delay={700}>
+        <Card>
+          <CardHeader>
+            <CardTitle>图表使用说明</CardTitle>
+            <CardDescription>基于 Recharts 库构建的图表系统</CardDescription>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <p className="text-muted-foreground">
+              本模板使用 <code>recharts</code> 作为图表库，并通过 <code>ChartContainer</code> 组件进行封装，
+              支持主题颜色变量和响应式布局。图表颜色会自动适配当前主题预设。
+            </p>
+            <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="flex items-center gap-2">
+                <div className="h-4 w-4 rounded bg-[var(--chart-1)]" />
+                <span className="text-sm">chart-1</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-4 w-4 rounded bg-[var(--chart-2)]" />
+                <span className="text-sm">chart-2</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-4 w-4 rounded bg-[var(--chart-3)]" />
+                <span className="text-sm">chart-3</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-4 w-4 rounded bg-[var(--chart-4)]" />
+                <span className="text-sm">chart-4</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-4 w-4 rounded bg-[var(--chart-5)]" />
+                <span className="text-sm">chart-5</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded bg-[var(--chart-2)]" />
-              <span className="text-sm">chart-2</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded bg-[var(--chart-3)]" />
-              <span className="text-sm">chart-3</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded bg-[var(--chart-4)]" />
-              <span className="text-sm">chart-4</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded bg-[var(--chart-5)]" />
-              <span className="text-sm">chart-5</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </FadeIn>
     </div>
   );
 }

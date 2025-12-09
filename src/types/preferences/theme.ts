@@ -25,6 +25,14 @@ export const THEME_PRESET_OPTIONS = [
     },
   },
   {
+    label: "琥珀",
+    value: "amber",
+    primary: {
+      light: "oklch(0.7 0.18 70)",
+      dark: "oklch(0.75 0.16 70)",
+    },
+  },
+  {
     label: "Brutalist",
     value: "brutalist",
     primary: {
@@ -38,6 +46,14 @@ export const THEME_PRESET_OPTIONS = [
     primary: {
       light: "oklch(0.5 0.2 15)",
       dark: "oklch(0.6 0.18 15)",
+    },
+  },
+  {
+    label: "钴蓝",
+    value: "cobalt",
+    primary: {
+      light: "oklch(0.52 0.2 250)",
+      dark: "oklch(0.62 0.18 250)",
     },
   },
   {
@@ -86,6 +102,14 @@ export const THEME_PRESET_OPTIONS = [
     primary: {
       light: "oklch(0.62 0.2 350)",
       dark: "oklch(0.72 0.16 350)",
+    },
+  },
+  {
+    label: "石板灰",
+    value: "slate",
+    primary: {
+      light: "oklch(0.45 0.08 255)",
+      dark: "oklch(0.6 0.08 255)",
     },
   },
   {

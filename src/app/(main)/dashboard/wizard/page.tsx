@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+import { FadeIn } from "@/components/animation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -88,46 +89,50 @@ export default function WizardPage() {
   return (
     <div className="py-6">
       {/* 页面标题 */}
-      <div className="mb-8 text-center">
-        <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">创建您的个人资料</h1>
-        <p className="text-muted-foreground mt-2">完成以下步骤以设置您的账户</p>
-      </div>
+      <FadeIn>
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">创建您的个人资料</h1>
+          <p className="text-muted-foreground mt-2">完成以下步骤以设置您的账户</p>
+        </div>
+      </FadeIn>
 
       {/* 向导卡片 */}
-      <div className="mx-auto max-w-3xl">
-        <Card>
-          <CardContent className="p-6 sm:p-8">
-            {/* 步骤指示器 */}
-            {!isComplete && (
-              <div className="mb-8">
-                <WizardSteps steps={steps} currentStep={currentStep} />
-              </div>
-            )}
+      <FadeIn delay={100}>
+        <div className="mx-auto max-w-3xl">
+          <Card>
+            <CardContent className="p-6 sm:p-8">
+              {/* 步骤指示器 */}
+              {!isComplete && (
+                <div className="mb-8">
+                  <WizardSteps steps={steps} currentStep={currentStep} />
+                </div>
+              )}
 
-            {/* 步骤内容 */}
-            <div className="min-h-[300px]">{renderStepContent()}</div>
+              {/* 步骤内容 */}
+              <div className="min-h-[300px]">{renderStepContent()}</div>
 
-            {/* 导航按钮 */}
-            {!isComplete && (
-              <div className="mt-8 flex justify-between">
-                <Button variant="outline" onClick={handleBack} disabled={currentStep === 1} className="gap-2">
-                  <ArrowLeft className="h-4 w-4" />
-                  上一步
-                </Button>
-                <Button onClick={handleNext} className="gap-2">
-                  {currentStep === steps.length ? "完成" : "下一步"}
-                  {currentStep !== steps.length && <ArrowRight className="h-4 w-4" />}
-                </Button>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+              {/* 导航按钮 */}
+              {!isComplete && (
+                <div className="mt-8 flex justify-between">
+                  <Button variant="outline" onClick={handleBack} disabled={currentStep === 1} className="gap-2">
+                    <ArrowLeft className="h-4 w-4" />
+                    上一步
+                  </Button>
+                  <Button onClick={handleNext} className="gap-2">
+                    {currentStep === steps.length ? "完成" : "下一步"}
+                    {currentStep !== steps.length && <ArrowRight className="h-4 w-4" />}
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
 
-        {/* 使用说明 */}
-        <div className="text-muted-foreground mt-6 text-center text-sm">
-          <p>所有信息均会安全存储，仅用于改善您的使用体验。</p>
+          {/* 使用说明 */}
+          <div className="text-muted-foreground mt-6 text-center text-sm">
+            <p>所有信息均会安全存储，仅用于改善您的使用体验。</p>
+          </div>
         </div>
-      </div>
+      </FadeIn>
     </div>
   );
 }
