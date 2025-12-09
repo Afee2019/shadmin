@@ -75,7 +75,7 @@ export const usersColumns: ColumnDef<User>[] = [
     accessorKey: "role",
     header: ({ column }) => <DataTableColumnHeader column={column} title="角色" />,
     cell: ({ row }) => {
-      const role = row.getValue("role");
+      const role = row.getValue<User["role"]>("role");
       return (
         <Badge variant="secondary" className={roleColors.get(role)}>
           {role}
@@ -90,7 +90,7 @@ export const usersColumns: ColumnDef<User>[] = [
     accessorKey: "status",
     header: ({ column }) => <DataTableColumnHeader column={column} title="状态" />,
     cell: ({ row }) => {
-      const status = row.getValue("status");
+      const status = row.getValue<User["status"]>("status");
       return (
         <Badge variant="secondary" className={statusColors.get(status)}>
           {status}
