@@ -25,6 +25,7 @@ import {
   Wand2,
   Bell,
   FolderOpen,
+  Search,
   type LucideIcon,
 } from "lucide-react";
 
@@ -201,6 +202,12 @@ export const sidebarItems: NavGroup[] = [
         title: "文件",
         url: "/dashboard/files",
         icon: FolderOpen,
+        isNew: true,
+      },
+      {
+        title: "搜索",
+        url: "/dashboard/search",
+        icon: Search,
         isNew: true,
       },
       {
