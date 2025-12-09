@@ -72,19 +72,15 @@ export function LayoutControls(props: LayoutControlsProps) {
       <PopoverContent align="end">
         <div className="flex flex-col gap-5">
           <div className="space-y-1.5">
-            <h4 className="text-sm leading-none font-medium">Preferences</h4>
-            <p className="text-muted-foreground text-xs">Customize your dashboard layout preferences.</p>
-            <p className="text-foreground text-xs font-medium italic">
-              Values are not persisted in browser storage by default. Persistence can be enabled in code if needed.
-              Other layout preferences are temporarily disabled while a bug is being fixed and will be re-enabled soon.
-            </p>
+            <h4 className="text-sm leading-none font-medium">偏好设置</h4>
+            <p className="text-muted-foreground text-xs">自定义仪表盘布局偏好。</p>
           </div>
           <div className="space-y-3 **:data-[slot=toggle-group]:w-full **:data-[slot=toggle-group-item]:flex-1 **:data-[slot=toggle-group-item]:text-xs">
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Theme Preset</Label>
+              <Label className="text-xs font-medium">主题预设</Label>
               <Select value={themePreset} onValueChange={onThemePresetChange}>
                 <SelectTrigger size="sm" className="w-full text-xs">
-                  <SelectValue placeholder="Preset" />
+                  <SelectValue placeholder="选择预设" />
                 </SelectTrigger>
                 <SelectContent>
                   {THEME_PRESET_OPTIONS.map((preset) => (
@@ -103,7 +99,7 @@ export function LayoutControls(props: LayoutControlsProps) {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Theme Mode</Label>
+              <Label className="text-xs font-medium">主题模式</Label>
               <ToggleGroup
                 size="sm"
                 variant="outline"
@@ -111,90 +107,86 @@ export function LayoutControls(props: LayoutControlsProps) {
                 value={themeMode}
                 onValueChange={onThemeModeChange}
               >
-                <ToggleGroupItem value="light" aria-label="Toggle inset">
-                  Light
+                <ToggleGroupItem value="light" aria-label="切换浅色模式">
+                  浅色
                 </ToggleGroupItem>
-                <ToggleGroupItem value="dark" aria-label="Toggle sidebar">
-                  Dark
+                <ToggleGroupItem value="dark" aria-label="切换深色模式">
+                  深色
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Page Layout</Label>
+              <Label className="text-xs font-medium">页面布局</Label>
               <ToggleGroup
-                disabled
                 size="sm"
                 variant="outline"
                 type="single"
                 value={contentLayout}
                 onValueChange={onContentLayoutChange}
               >
-                <ToggleGroupItem value="centered" aria-label="Toggle centered">
-                  Centered
+                <ToggleGroupItem value="centered" aria-label="切换居中布局">
+                  居中
                 </ToggleGroupItem>
-                <ToggleGroupItem value="full-width" aria-label="Toggle full-width">
-                  Full Width
+                <ToggleGroupItem value="full-width" aria-label="切换全宽布局">
+                  全宽
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Navbar Behavior</Label>
+              <Label className="text-xs font-medium">导航栏行为</Label>
               <ToggleGroup
-                disabled
                 size="sm"
                 variant="outline"
                 type="single"
                 value={navbarStyle}
                 onValueChange={onNavbarStyleChange}
               >
-                <ToggleGroupItem value="sticky" aria-label="Toggle sticky">
-                  Sticky
+                <ToggleGroupItem value="sticky" aria-label="切换固定">
+                  固定
                 </ToggleGroupItem>
-                <ToggleGroupItem value="scroll" aria-label="Toggle scroll">
-                  Scroll
+                <ToggleGroupItem value="scroll" aria-label="切换滚动">
+                  滚动
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Sidebar Style</Label>
+              <Label className="text-xs font-medium">侧边栏样式</Label>
               <ToggleGroup
-                disabled
                 size="sm"
                 variant="outline"
                 type="single"
                 value={variant}
                 onValueChange={onSidebarStyleChange}
               >
-                <ToggleGroupItem value="inset" aria-label="Toggle inset">
-                  Inset
+                <ToggleGroupItem value="inset" aria-label="切换内嵌">
+                  内嵌
                 </ToggleGroupItem>
-                <ToggleGroupItem value="sidebar" aria-label="Toggle sidebar">
-                  Sidebar
+                <ToggleGroupItem value="sidebar" aria-label="切换侧边栏">
+                  侧边栏
                 </ToggleGroupItem>
-                <ToggleGroupItem value="floating" aria-label="Toggle floating">
-                  Floating
+                <ToggleGroupItem value="floating" aria-label="切换浮动">
+                  浮动
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Sidebar Collapse Mode</Label>
+              <Label className="text-xs font-medium">侧边栏折叠模式</Label>
               <ToggleGroup
-                disabled
                 size="sm"
                 variant="outline"
                 type="single"
                 value={collapsible}
                 onValueChange={onSidebarCollapseModeChange}
               >
-                <ToggleGroupItem value="icon" aria-label="Toggle icon">
-                  Icon
+                <ToggleGroupItem value="icon" aria-label="切换图标模式">
+                  图标
                 </ToggleGroupItem>
-                <ToggleGroupItem value="offcanvas" aria-label="Toggle offcanvas">
-                  OffCanvas
+                <ToggleGroupItem value="offcanvas" aria-label="切换抽屉模式">
+                  抽屉
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
