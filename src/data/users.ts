@@ -5,15 +5,15 @@ export const users = [
     username: "lishaojun",
     email: "lisj2025@163.com",
     avatar: "https://avatars.githubusercontent.com/u/43849669",
-    role: "administrator",
+    role: "管理员",
   },
   {
     id: "2",
-    name: "Ammar Khan",
-    username: "ammarkhnz",
-    email: "hello@ammarkhnz.com",
+    name: "王小明",
+    username: "wangxiaoming",
+    email: "wangxm@example.com",
     avatar: "",
-    role: "admin",
+    role: "普通用户",
   },
 ];
 

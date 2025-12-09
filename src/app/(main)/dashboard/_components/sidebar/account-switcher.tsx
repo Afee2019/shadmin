@@ -59,21 +59,21 @@ export function AccountSwitcher({
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <BadgeCheck />
-            Account
+            账户
           </DropdownMenuItem>
           <DropdownMenuItem>
             <CreditCard />
-            Billing
+            账单
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Bell />
-            Notifications
+            通知
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <LogOut />
-          Log out
+          退出登录
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
