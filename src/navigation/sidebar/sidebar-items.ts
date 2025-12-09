@@ -17,6 +17,7 @@ import {
   GraduationCap,
   Settings,
   UserCircle,
+  CreditCard,
   type LucideIcon,
 } from "lucide-react";
 
@@ -104,6 +105,12 @@ export const sidebarItems: NavGroup[] = [
         title: "设置",
         url: "/dashboard/settings",
         icon: Settings,
+      },
+      {
+        title: "定价",
+        url: "/dashboard/pricing",
+        icon: CreditCard,
+        isNew: true,
       },
       {
         title: "邮件",

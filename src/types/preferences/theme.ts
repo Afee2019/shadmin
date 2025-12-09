@@ -65,11 +65,27 @@ export const THEME_PRESET_OPTIONS = [
     },
   },
   {
+    label: "玫瑰",
+    value: "rose",
+    primary: {
+      light: "oklch(0.62 0.2 350)",
+      dark: "oklch(0.72 0.16 350)",
+    },
+  },
+  {
     label: "Soft Pop",
     value: "soft-pop",
     primary: {
       light: "oklch(0.5106 0.2301 276.9656)",
       dark: "oklch(0.6801 0.1583 276.9349)",
+    },
+  },
+  {
+    label: "日落",
+    value: "sunset",
+    primary: {
+      light: "oklch(0.65 0.2 35)",
+      dark: "oklch(0.72 0.18 35)",
     },
   },
   {
