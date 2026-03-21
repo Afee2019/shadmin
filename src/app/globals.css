@@ -176,6 +176,15 @@ html {
   overscroll-behavior: none;
 }
 
+/* Hide scrollbar for tab bar and other scroll containers */
+@utility scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .disable-transitions * {
   transition: none !important;
 }
