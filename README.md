@@ -15,6 +15,7 @@
 - **最新技术栈** - Next.js 16 + React 19 + Tailwind v4 + TypeScript
 - **响应式设计** - 完美适配桌面端和移动端
 - **灵活布局** - 可折叠侧边栏、多种内容宽度选项
+- **多标签页导航** - 支持多页签切换、关闭、持久化，提升操作效率
 
 ![iShot_2025-12-09_18.06.49](https://upic-lisj.oss-cn-beijing.aliyuncs.com/uPic/1765280732-iShot_2025-12-09_18.06.49.png)
 
