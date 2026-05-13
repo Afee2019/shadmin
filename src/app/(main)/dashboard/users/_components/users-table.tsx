@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { Download, Plus, Search } from "lucide-react";
 
 import { DataTable } from "@/components/data-table/data-table";
@@ -10,12 +12,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { useDataTableInstance } from "@/hooks/use-data-table-instance";
 
-import { usersColumns } from "./columns";
-import { usersData } from "./users-data";
+import { type User } from "../_lib/store";
 
-export function UsersTable() {
+import { usersColumns } from "./columns";
+import { UserFormDialog } from "./user-form-dialog";
+
+export function UsersTable({ users }: { users: User[] }) {
+  const [createOpen, setCreateOpen] = useState(false);
+
   const table = useDataTableInstance({
-    data: usersData,
+    data: users,
     columns: usersColumns,
     getRowId: (row) => row.id,
   });
@@ -25,7 +31,9 @@ export function UsersTable() {
       <CardHeader className="flex-col gap-4 space-y-0 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <CardTitle>用户列表</CardTitle>
-          <CardDescription>管理系统中的所有用户账户</CardDescription>
+          <CardDescription>
+            管理系统中的所有用户账户（演示后端用模块级内存 store，重启 dev server 数据丢失）
+          </CardDescription>
         </div>
         <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
           <div className="relative w-full sm:w-[200px]">
@@ -43,7 +51,7 @@ export function UsersTable() {
               <Download className="h-4 w-4" />
               <span className="hidden lg:inline">导出</span>
             </Button>
-            <Button size="sm">
+            <Button size="sm" onClick={() => setCreateOpen(true)}>
               <Plus className="h-4 w-4" />
               <span className="hidden lg:inline">添加用户</span>
             </Button>
@@ -56,6 +64,8 @@ export function UsersTable() {
         </div>
         <DataTablePagination table={table} />
       </CardContent>
+
+      <UserFormDialog open={createOpen} onOpenChange={setCreateOpen} />
     </Card>
   );
 }

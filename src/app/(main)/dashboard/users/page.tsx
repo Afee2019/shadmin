@@ -1,11 +1,13 @@
 import { FadeIn } from "@/components/animation";
 
 import { UsersTable } from "./_components/users-table";
+import { getUsers } from "./_lib/store";
 
-export default function UsersPage() {
+export default async function UsersPage() {
+  const users = await getUsers();
+
   return (
     <div className="flex flex-1 flex-col gap-6 p-4 pt-0">
-      {/* 页面标题 */}
       <FadeIn>
         <div>
           <h1 className="text-2xl font-bold">用户管理</h1>
@@ -13,9 +15,8 @@ export default function UsersPage() {
         </div>
       </FadeIn>
 
-      {/* 用户表格 */}
       <FadeIn delay={100}>
-        <UsersTable />
+        <UsersTable users={users} />
       </FadeIn>
     </div>
   );

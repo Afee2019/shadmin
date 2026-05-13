@@ -1,23 +1,15 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
 
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
-import { type User } from "./users-data";
+import { type User } from "../_lib/store";
+
+import { UserActionsCell } from "./user-actions-cell";
 
 const roleColors = new Map<User["role"], string>([
   ["管理员", "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"],
@@ -117,27 +109,6 @@ export const usersColumns: ColumnDef<User>[] = [
   {
     id: "actions",
     enableHiding: false,
-    cell: ({ row }) => {
-      const user = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">打开菜单</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>操作</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.id)}>复制用户 ID</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>查看详情</DropdownMenuItem>
-            <DropdownMenuItem>编辑用户</DropdownMenuItem>
-            <DropdownMenuItem className="text-destructive">删除用户</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
+    cell: ({ row }) => <UserActionsCell user={row.original} />,
   },
 ];
