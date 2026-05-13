@@ -47,7 +47,7 @@ export function OrderStatusChart() {
               cy="50%"
               outerRadius={100}
               paddingAngle={2}
-              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+              label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
               labelLine={false}
             >
               {orderStatusData.map((entry, index) => (

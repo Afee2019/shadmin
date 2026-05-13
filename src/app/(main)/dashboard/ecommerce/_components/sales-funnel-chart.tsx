@@ -45,7 +45,7 @@ export function SalesFunnelChart() {
                       <div className="flex items-center gap-2">
                         <span className="font-medium">{item.payload.name}</span>
                       </div>
-                      <div className="text-muted-foreground text-sm">人数: {value.toLocaleString()}</div>
+                      <div className="text-muted-foreground text-sm">人数: {Number(value ?? 0).toLocaleString()}</div>
                       <div className="text-muted-foreground text-sm">总转化率: {item.payload.rate}%</div>
                       <div className="text-muted-foreground text-sm">环节转化率: {item.payload.stepRate}%</div>
                     </div>
@@ -60,7 +60,7 @@ export function SalesFunnelChart() {
               <LabelList
                 dataKey="rate"
                 position="right"
-                formatter={(value: number) => `${value}%`}
+                formatter={(value) => `${value ?? 0}%`}
                 className="fill-muted-foreground text-xs"
               />
             </Bar>
