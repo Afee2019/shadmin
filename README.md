@@ -130,9 +130,43 @@ pnpm dev
 ```bash
 pnpm dev              # 启动开发服务器
 pnpm build            # 构建生产版本
-pnpm lint             # 代码检查
+pnpm test             # 运行单元测试（vitest）
+pnpm typecheck        # TypeScript 类型检查
+pnpm lint             # 代码检查（ESLint）
 pnpm format           # 代码格式化
 pnpm generate:presets # 生成主题类型
+```
+
+## 部署
+
+### Vercel（推荐）
+
+直接连接 GitHub 仓库到 Vercel 即可自动部署。Next.js `output: "standalone"` 设置不影响 Vercel 部署。
+
+### 自托管（Docker）
+
+仓库包含 `Dockerfile` 和 `docker-compose.yml`，基于 Next.js standalone 输出构建多阶段镜像（约 150MB）。
+
+```bash
+# 单次构建运行
+docker build -t shadmin .
+docker run -p 3000:3000 -e NEXT_PUBLIC_APP_URL=http://localhost:3000 shadmin
+
+# 或用 compose
+docker compose up -d
+```
+
+镜像以非 root 用户运行，包含 health check。需要其他环境变量见 [.env.example](./.env.example)。
+
+### 自托管（Node.js 直接运行）
+
+```bash
+pnpm install --frozen-lockfile
+pnpm build
+# 启动 standalone server（推荐，免装 node_modules）
+node .next/standalone/server.js
+# 或常规启动
+pnpm start
 ```
 
 ## 项目结构
