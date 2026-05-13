@@ -4,6 +4,7 @@ node_modules
 components.json
 next.config.mjs
 package-lock.json
+pnpm-lock.yaml
 package.json
 postcss.config.mjs
 README.md
