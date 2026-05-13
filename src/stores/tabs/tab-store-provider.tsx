@@ -30,7 +30,7 @@ function getPageTitle(pathname: string): string {
   if (navItem) return navItem.title;
 
   const segments = pathname.split("/").filter(Boolean);
-  return segments[segments.length - 1] || "页面";
+  return segments[segments.length - 1] ?? "页面";
 }
 
 export function TabsStoreProvider({ children }: { children: React.ReactNode }) {

@@ -37,7 +37,7 @@ const chartConfig = {
     label: "收入",
     color: "var(--chart-3)",
   },
-} as ChartConfig;
+} satisfies ChartConfig;
 
 export function FinancialOverview() {
   const totalIncome = chartData.reduce((acc, item) => acc + item.income, 0);

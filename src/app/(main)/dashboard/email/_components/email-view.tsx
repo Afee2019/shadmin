@@ -49,8 +49,7 @@ const getFileIcon = (type: string): React.ElementType => {
     zip: FileArchive,
     rar: FileArchive,
   };
-  // eslint-disable-next-line security/detect-object-injection -- type is from trusted attachment data
-  return Object.prototype.hasOwnProperty.call(icons, type) ? icons[type] : Paperclip;
+  return (Object.hasOwn(icons, type) ? icons[type] : undefined) ?? Paperclip;
 };
 
 export function EmailView({ email, className }: EmailViewProps) {

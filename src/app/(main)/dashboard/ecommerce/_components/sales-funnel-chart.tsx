@@ -11,11 +11,11 @@ const chartConfig = {
   value: { label: "人数", color: "var(--chart-1)" },
 } satisfies ChartConfig;
 
-// 计算转化率
+// 计算转化率 —— map 内 arr 同源，arr[0] 与 arr[index-1]（index>0 时）必有值
 const funnelWithRates = salesFunnelData.map((item, index, arr) => ({
   ...item,
-  rate: index === 0 ? 100 : Math.round((item.value / arr[0].value) * 100),
-  stepRate: index === 0 ? 100 : Math.round((item.value / arr[index - 1].value) * 100),
+  rate: index === 0 ? 100 : Math.round((item.value / arr[0]!.value) * 100),
+  stepRate: index === 0 ? 100 : Math.round((item.value / arr[index - 1]!.value) * 100),
 }));
 
 export function SalesFunnelChart() {

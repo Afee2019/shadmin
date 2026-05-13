@@ -8,7 +8,8 @@ import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "
 import { Separator } from "@/components/ui/separator";
 import { formatCurrency } from "@/lib/utils";
 
-const chartData = [{ period: "last-week", groceries: 380, transport: 120, other: 80 }];
+const weeklyExpense = { groceries: 380, transport: 120, other: 80 };
+const chartData = [{ period: "last-week", ...weeklyExpense }];
 
 const chartConfig = {
   groceries: {
@@ -26,7 +27,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function ExpenseSummary() {
-  const totalExpenses = chartData.length ? chartData[0].groceries + chartData[0].transport + chartData[0].other : 0;
+  const totalExpenses = weeklyExpense.groceries + weeklyExpense.transport + weeklyExpense.other;
   return (
     <Card>
       <CardHeader>
@@ -99,7 +100,9 @@ export function ExpenseSummary() {
             </div>
             <div className="space-y-0.5 text-center">
               <p className="text-muted-foreground text-xs uppercase">日用品</p>
-              <p className="font-medium tabular-nums">{formatCurrency(chartData[0].groceries, { noDecimals: true })}</p>
+              <p className="font-medium tabular-nums">
+                {formatCurrency(weeklyExpense.groceries, { noDecimals: true })}
+              </p>
             </div>
           </div>
           <Separator orientation="vertical" className="!h-auto" />
@@ -109,7 +112,9 @@ export function ExpenseSummary() {
             </div>
             <div className="space-y-0.5 text-center">
               <p className="text-muted-foreground text-xs uppercase">交通</p>
-              <p className="font-medium tabular-nums">{formatCurrency(chartData[0].transport, { noDecimals: true })}</p>
+              <p className="font-medium tabular-nums">
+                {formatCurrency(weeklyExpense.transport, { noDecimals: true })}
+              </p>
             </div>
           </div>
           <Separator orientation="vertical" className="!h-auto" />
@@ -119,7 +124,7 @@ export function ExpenseSummary() {
             </div>
             <div className="space-y-0.5 text-center">
               <p className="text-muted-foreground text-xs uppercase">其他</p>
-              <p className="font-medium tabular-nums">{formatCurrency(chartData[0].other, { noDecimals: true })}</p>
+              <p className="font-medium tabular-nums">{formatCurrency(weeklyExpense.other, { noDecimals: true })}</p>
             </div>
           </div>
         </div>

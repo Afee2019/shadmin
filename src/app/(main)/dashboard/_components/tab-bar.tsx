@@ -111,7 +111,7 @@ export function TabBar() {
       if (isActive) {
         const remaining = tabs.filter((t) => t.url !== url);
         const newActive = remaining[Math.min(tabIndex, remaining.length - 1)];
-        router.push(newActive.url);
+        if (newActive) router.push(newActive.url);
       }
     },
     [activeUrl, tabs, removeTab, router],

@@ -62,6 +62,7 @@ export default function KanbanPage() {
 
         // 移动任务
         const [task] = sourceColumn.tasks.splice(taskIndex, 1);
+        if (!task) return prevColumns;
         targetColumn.tasks.push(task);
 
         return newColumns;

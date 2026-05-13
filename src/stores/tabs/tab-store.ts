@@ -51,7 +51,7 @@ export const createTabsStore = () =>
           if (activeUrl === url) {
             const closedIndex = tabs.findIndex((t) => t.url === url);
             const newActive = newTabs[Math.min(closedIndex, newTabs.length - 1)];
-            set({ tabs: newTabs, activeUrl: newActive.url });
+            if (newActive) set({ tabs: newTabs, activeUrl: newActive.url });
           } else {
             set({ tabs: newTabs });
           }

@@ -74,7 +74,7 @@ export function InsightCards() {
                       <li key={item.source} className="flex w-36 items-center justify-between">
                         <span className="flex items-center gap-2 capitalize">
                           <span className="size-2.5 rounded-full" style={{ background: item.fill }} />
-                          {leadsBySourceChartConfig[item.source].label}
+                          {leadsBySourceChartConfig[item.source]?.label ?? item.source}
                         </span>
                         <span className="tabular-nums">{item.leads}</span>
                       </li>

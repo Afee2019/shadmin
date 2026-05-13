@@ -46,6 +46,7 @@ export function MiniCalendar({ events, selectedDate, onSelectDate, className }: 
           components={{
             DayButton: ({ day, modifiers, ...props }) => {
               const dayEvents = getEventsForDay(day.date);
+              const firstEvent = dayEvents[0];
               const isToday = isSameDay(day.date, new Date());
               const isSelected = selectedDate && isSameDay(day.date, selectedDate);
 
@@ -61,8 +62,8 @@ export function MiniCalendar({ events, selectedDate, onSelectDate, className }: 
                   )}
                 >
                   {day.date.getDate()}
-                  {dayEvents.length > 0 && !isSelected && (
-                    <span className={cn("absolute bottom-0.5 h-1 w-1 rounded-full", colorMap[dayEvents[0].color])} />
+                  {firstEvent && !isSelected && (
+                    <span className={cn("absolute bottom-0.5 h-1 w-1 rounded-full", colorMap[firstEvent.color])} />
                   )}
                 </button>
               );
