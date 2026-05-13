@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 
 import { AccountOverview } from "./_components/account-overview";

@@ -1,5 +1,3 @@
-"use client";
-
 import { Download, Filter, Plus } from "lucide-react";
 
 import { FadeIn } from "@/components/animation";

@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Timeline, TimelineItem } from "@/components/ui/timeline";

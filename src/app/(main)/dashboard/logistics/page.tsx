@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 
 import { DeliveryStatusChart } from "./_components/delivery-status-chart";

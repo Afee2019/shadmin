@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 
 import { NotificationList } from "./_components/notification-list";

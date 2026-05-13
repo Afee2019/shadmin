@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 
 import { BookingCards } from "./_components/booking-cards";

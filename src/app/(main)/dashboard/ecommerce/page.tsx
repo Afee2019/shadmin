@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 
 import { CategoryChart } from "./_components/category-chart";

@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 
 import { ChartAreaInteractive } from "./_components/chart-area-interactive";

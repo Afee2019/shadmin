@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 import {
   Activity,
   ArrowUp,
@@ -10,7 +6,6 @@ import {
   Calendar,
   CheckCircle,
   DollarSign,
-  Lightbulb,
   MapPin,
   Music,
   ShoppingCart,
@@ -32,9 +27,9 @@ import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function WidgetsPage() {
-  const [lightsOn, setLightsOn] = useState(false);
+import { LightSwitchCard } from "./_components/light-switch-card";
 
+export default function WidgetsPage() {
   return (
     <div className="space-y-8 py-6">
       {/* 页面标题 */}
@@ -212,13 +207,7 @@ export default function WidgetsPage() {
         <section>
           <h2 className="mb-4 text-lg font-medium">控制卡片</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <Card className={lightsOn ? "bg-amber-500 text-white" : ""}>
-              <CardContent className="flex flex-col items-center justify-center py-8">
-                <Lightbulb className={`h-12 w-12 ${lightsOn ? "text-white" : "text-muted-foreground"}`} />
-                <p className="mt-4 font-medium">灯光</p>
-                <Switch className="mt-4" checked={lightsOn} onCheckedChange={setLightsOn} />
-              </CardContent>
-            </Card>
+            <LightSwitchCard />
 
             <Card>
               <CardContent className="flex flex-col items-center justify-center py-8">

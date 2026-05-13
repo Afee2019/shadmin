@@ -1,5 +1,3 @@
-"use client";
-
 import { FadeIn } from "@/components/animation";
 import { CreditCard } from "@/components/ui/credit-card";
 
