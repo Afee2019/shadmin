@@ -8,6 +8,7 @@ import { FinancialOverview } from "./_components/financial-overview";
 export default function Page() {
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <h1 className="sr-only">财务仪表盘</h1>
       <FadeIn>
         <div className="flex flex-col gap-4 lg:col-span-1">
           <AccountOverview />

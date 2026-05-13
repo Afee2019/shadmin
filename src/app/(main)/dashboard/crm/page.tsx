@@ -8,6 +8,7 @@ import { TableCards } from "./_components/table-cards";
 export default function Page() {
   return (
     <div className="flex flex-col gap-4 md:gap-6">
+      <h1 className="sr-only">CRM 仪表盘</h1>
       <FadeIn>
         <OverviewCards />
       </FadeIn>

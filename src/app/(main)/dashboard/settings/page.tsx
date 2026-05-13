@@ -11,6 +11,7 @@ import { SettingsSidebar } from "./_components/settings-sidebar";
 export default function SettingsPage() {
   return (
     <FadeIn className="@container/main flex flex-1 flex-col gap-4 p-4 md:gap-6 md:p-6">
+      <h1 className="sr-only">系统设置</h1>
       <div className="flex flex-col gap-6 lg:flex-row">
         {/* 左侧导航 */}
         <aside className="w-full lg:w-64 lg:shrink-0">

@@ -33,12 +33,13 @@ export default function EmailPage() {
 
   return (
     <FadeIn className="flex h-[calc(100vh-8rem)] flex-col">
+      <h1 className="sr-only">邮件</h1>
       {/* 顶部工具栏 */}
       <div className="flex items-center gap-2 border-b px-4 py-2">
         {/* 移动端菜单 */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="lg:hidden">
+            <Button variant="ghost" size="icon" className="lg:hidden" aria-label="打开邮箱文件夹菜单">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -65,10 +66,10 @@ export default function EmailPage() {
         </div>
 
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" aria-label="刷新邮件">
             <RefreshCw className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" aria-label="邮箱设置">
             <Settings className="h-4 w-4" />
           </Button>
         </div>
