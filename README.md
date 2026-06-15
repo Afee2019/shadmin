@@ -1,5 +1,7 @@
 # Shadmin
 
+> 🧩 **Part of JCDI（嘉诚数智产品家族）** — 总览见 [`~/dev/JCDI/notes/000`](../JCDI/notes/000-JCDI产品家族总览.md)
+
 > 基于 Shadcn/ui 的现代化 Next.js Admin 模板
 
 **Shadmin** = Shadcn + Admin，一个开箱即用的管理后台模板，基于最新的 Next.js 16、React 19、Tailwind CSS v4 和 shadcn/ui 构建。
